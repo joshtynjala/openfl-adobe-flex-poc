@@ -1,0 +1,24 @@
+{
+	"config": "js",
+	"compilerOptions": {
+		"targets": ["JSRoyale"],
+		"html-template": "index.template.html",
+		"source-path": [
+			"src",
+			"flex_sdk_3.0.0.477A/frameworks/projects/framework/src"
+		],
+		"js-library-path": [
+			"${royalelib}/js/libs/LanguageJS.swc",
+			"${royalelib}/js/libs/ReflectionJS.swc"
+		],
+		"js-external-library-path": [
+			"${royalelib}/libs/player/11.1/playerglobal.swc"
+		],
+		"source-map": true
+	},
+	"additionalOptions": [
+		"-js-getter-prefix=get_",
+		"-js-setter-prefix=set_"
+	],
+	"mainClass": "Flex3ForOpenFL"
+}

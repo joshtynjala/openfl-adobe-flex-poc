@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>OpenFL and Adobe Flex 3 Application</title>
+    <script src="https://unpkg.com/openfl@8.9.6/dist/openfl.min.js"></script>
+    <script src="https://unpkg.com/actuate@1.8.9-beta/dist/actuate.min.js"></script>
+	<script>
+		var flash = openfl;
+	</script>
+	<style>
+		html,
+		body {
+		  margin: 0;
+		  padding: 0;
+		  height: 100%;
+		  overflow: hidden;
+		}
+	</style>
+${head}
+</head>
+<body>
+<script>
+flash.utils.getDefinitionByName = function(name)
+{
+	var index = name.lastIndexOf("::");
+	if(index != -1)
+	{
+		name = name.substr(0, index) + "." + name.substr(index + 2);
+	}
+	var def = org.apache.royale.reflection.getDefinitionByName(name);
+	if(def)
+	{
+		return def;
+	}
+	return openfl.Lib.getDefinitionByName(name);
+};
+flash.utils.getQualifiedClassName = org.apache.royale.reflection.getQualifiedClassName;
+flash.utils.getQualifiedSuperclassName = org.apache.royale.reflection.getQualifiedSuperclassName;
+var stage = new openfl.display.Stage(0, 0, null, Flex3ForOpenFL, {
+	allowHighDPI: true,
+});
+document.body.appendChild(stage.element);
+</script>
+</body>
+</html>
