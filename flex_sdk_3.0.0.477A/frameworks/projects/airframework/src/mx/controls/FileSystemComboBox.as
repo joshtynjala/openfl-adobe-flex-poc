@@ -69,7 +69,7 @@ use namespace mx_internal;
 
 [IconFile("FileSystemComboBox.png")]
 
-[ResourceBundle("aircontrols")]
+// [ResourceBundle("aircontrols")]
 
 /**
  *  The FileSystemComboBox control defines a combo box control for

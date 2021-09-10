@@ -136,7 +136,7 @@ include "../styles/metadata/TextStyles.as"
 
 [IconFile("TextInput.png")]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
     
 /**
  *  The TextInput control is a single-line text field

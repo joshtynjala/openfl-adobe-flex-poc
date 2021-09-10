@@ -15,8 +15,8 @@ package mx.validators
 import mx.managers.ISystemManager;
 import mx.managers.SystemManager;
 
-[ResourceBundle("SharedResources")]
-[ResourceBundle("validators")]
+// [ResourceBundle("SharedResources")]
+// [ResourceBundle("validators")]
 
 /**
  *  The CurrencyValidator class ensures that a String

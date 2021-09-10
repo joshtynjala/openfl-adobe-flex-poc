@@ -50,7 +50,7 @@ import mx.utils.UIDUtil;
 
 [RemoteClass(alias="flex.messaging.io.ArrayList")]
 
-[ResourceBundle("collections")]
+// [ResourceBundle("collections")]
 
 /**
  *  @private

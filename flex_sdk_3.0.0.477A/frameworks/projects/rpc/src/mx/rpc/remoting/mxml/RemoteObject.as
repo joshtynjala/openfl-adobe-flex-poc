@@ -32,7 +32,7 @@ import mx.rpc.remoting.RemoteObject;
 
 use namespace mx_internal;
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * The &lt;mx:RemoteObject&gt; tag gives you access to the methods of

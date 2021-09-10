@@ -13,7 +13,6 @@ package mx.core
 {
 
 import flash.text.TextField;
-import flash.utils.Dictionary;
 
 use namespace mx_internal;
 
@@ -48,7 +47,8 @@ public class TextFieldFactory implements ITextFieldFactory
 	 * 
 	 *  Cache of textFields. Limit of one per module factory.
 	 */
-	private var textFields:Dictionary = new Dictionary(true);
+	private var textFieldKeys:Array = [];
+	private var textFieldValues:Array = [];
 			
 	//--------------------------------------------------------------------------
 	//
@@ -85,11 +85,17 @@ public class TextFieldFactory implements ITextFieldFactory
 	{
 		// Check to see if we already have a text field for this module factory.
 		var textField:TextField = null;
-		var textFieldDictionary:Dictionary = textFields[moduleFactory];
+		var index:int = textFieldKeys.indexOf(moduleFactory);
+		var textFieldDictionary:Array = null;
+		if(index != -1)
+		{
+			textFieldDictionary = textFieldValues[index];
+		}
+		
 
 		if (textFieldDictionary)
 		{
-			for (var iter:Object in textFieldDictionary)
+			for each (var iter:Object in textFieldDictionary)
 			{
 				textField = TextField(iter);
 				break;
@@ -105,9 +111,10 @@ public class TextFieldFactory implements ITextFieldFactory
 			// The dictionary could be empty, but not null because entries in the dictionary
 			// could be garbage collected.
 			if (!textFieldDictionary)
-				textFieldDictionary = new Dictionary(true);
-			textFieldDictionary[textField] = 1;
-			textFields[moduleFactory] = textFieldDictionary;
+				textFieldDictionary = [];
+			textFieldDictionary.push(textField);
+			textFieldKeys.push(moduleFactory);
+			textFieldValues.push(textFieldDictionary);
 		}
 
 		return textField;

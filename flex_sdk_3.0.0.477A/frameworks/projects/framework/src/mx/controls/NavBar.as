@@ -78,7 +78,7 @@ use namespace mx_internal;
 [Exclude(name="horizontalScrollBarStyleName", kind="style")]
 [Exclude(name="verticalScrollBarStyleName", kind="style")]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
 
 /**
  *  The NavBar control is the superclass for navigator controls, such as the

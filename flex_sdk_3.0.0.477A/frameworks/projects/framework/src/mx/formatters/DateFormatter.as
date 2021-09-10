@@ -16,7 +16,7 @@ import mx.core.mx_internal;
 import mx.managers.ISystemManager;
 import mx.managers.SystemManager;
 
-[ResourceBundle("SharedResources")]
+// [ResourceBundle("SharedResources")]
 
 /**
  *  The DateFormatter class uses a format String to return a formatted date and time String

@@ -253,8 +253,8 @@ include "../styles/metadata/TextStyles.as"
 
 [RequiresDataBinding(true)]
 
-[ResourceBundle("controls")]
-[ResourceBundle("SharedResources")]
+// [ResourceBundle("controls")]
+// [ResourceBundle("SharedResources")]
 
 /**
  *  The DateField control is a text field that shows the date

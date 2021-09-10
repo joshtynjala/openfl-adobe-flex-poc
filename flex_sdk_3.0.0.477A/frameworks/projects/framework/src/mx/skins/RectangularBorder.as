@@ -42,7 +42,7 @@ import mx.styles.ISimpleStyleClient;
 
 use namespace mx_internal;
 
-[ResourceBundle("skins")]
+// [ResourceBundle("skins")]
 
 /**
  *  The RectangularBorder class is an abstract base class for various classes

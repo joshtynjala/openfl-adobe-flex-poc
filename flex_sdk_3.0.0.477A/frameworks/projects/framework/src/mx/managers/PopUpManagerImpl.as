@@ -237,7 +237,9 @@ public class PopUpManagerImpl implements IPopUpManager
         // If the parent isn't rooted yet,
         // Or the root is the stage (which is the case in a second AIR window)
         // use the global system manager instance.
-        if ((!localRoot || localRoot is Stage) && parent is IUIComponent)
+        // if ((!localRoot || localRoot is Stage) && parent is IUIComponent)
+        //     localRoot = DisplayObjectContainer(IUIComponent(parent).systemManager);
+        if ((!localRoot || !(localRoot is ISystemManager)) && parent is IUIComponent)
             localRoot = DisplayObjectContainer(IUIComponent(parent).systemManager);
         if (localRoot is ISystemManager)
         {

@@ -71,7 +71,7 @@ use namespace mx_internal;
 
 [IconFile("Repeater.png")]
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 /**
  *  The Repeater class is the runtime object that corresponds

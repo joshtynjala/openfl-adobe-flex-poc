@@ -21,8 +21,8 @@ import mx.resources.ResourceManager;
 
 use namespace mx_internal;
 
-[ResourceBundle("formatters")]
-[ResourceBundle("SharedResources")]
+// [ResourceBundle("formatters")]
+// [ResourceBundle("SharedResources")]
 
 /**
  *  The DateBase class contains the localized string information

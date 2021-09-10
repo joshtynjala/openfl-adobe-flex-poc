@@ -40,14 +40,14 @@ public class Translator
     //
     //--------------------------------------------------------------------------
 
-    [ResourceBundle("messaging")]
+    // [ResourceBundle("messaging")]
     
 	/**
 	 *  @private
 	 */
 	private static var messagingBundle:ResourceBundle;    
 
-    [ResourceBundle("rpc")]
+    // [ResourceBundle("rpc")]
     
 	/**
 	 *  @private

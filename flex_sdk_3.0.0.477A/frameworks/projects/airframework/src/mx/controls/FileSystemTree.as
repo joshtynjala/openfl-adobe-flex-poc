@@ -79,7 +79,7 @@ use namespace mx_internal;
 
 [IconFile("FileSystemTree.png")]
 
-[ResourceBundle("aircontrols")]
+// [ResourceBundle("aircontrols")]
 
 /**
  *  The FileSystemTree control displays the contents of a

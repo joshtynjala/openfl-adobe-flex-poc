@@ -14,6 +14,7 @@ package mx.core
 
 import flash.display.Sprite;
 import mx.utils.NameUtil;
+import flash.display.DisplayObject;
 
 /**
  *  FlexSprite is a subclass of the Player's Sprite class
@@ -93,6 +94,67 @@ public class FlexSprite extends Sprite
 	{
 		return NameUtil.displayObjectToString(this);
 	}
+
+	override public function removeChildAt(index:int):DisplayObject {
+        return super.removeChild(super.getChildAt(index));
+	}
+
+	override public function addChild(child:DisplayObject):DisplayObject {
+        return super.addChildAt(child, super.numChildren);
+	}
+
+    /**
+     *  @private
+     *  This method allows access to the Player's native implementation
+     *  of addChild(), which can be useful since components
+     *  can override addChild() and thereby hide the native implementation.
+     *  Note that this "base method" is final and cannot be overridden,
+     *  so you can count on it to reflect what is happening at the player level.
+     */
+    mx_internal final function $addChild(child:DisplayObject):DisplayObject
+    {
+        return super.addChildAt(child, super.numChildren);
+    }
+
+    /**
+     *  @private
+     *  This method allows access to the Player's native implementation
+     *  of addChildAt(), which can be useful since components
+     *  can override addChildAt() and thereby hide the native implementation.
+     *  Note that this "base method" is final and cannot be overridden,
+     *  so you can count on it to reflect what is happening at the player level.
+     */
+    mx_internal final function $addChildAt(child:DisplayObject,
+                                           index:int):DisplayObject
+    {
+        return super.addChildAt(child, index);
+    }
+
+    /**
+     *  @private
+     *  This method allows access to the Player's native implementation
+     *  of removeChild(), which can be useful since components
+     *  can override removeChild() and thereby hide the native implementation.
+     *  Note that this "base method" is final and cannot be overridden,
+     *  so you can count on it to reflect what is happening at the player level.
+     */
+    mx_internal final function $removeChild(child:DisplayObject):DisplayObject
+    {
+        return super.removeChild(child);
+    }
+
+    /**
+     *  @private
+     *  This method allows access to the Player's native implementation
+     *  of removeChildAt(), which can be useful since components
+     *  can override removeChildAt() and thereby hide the native implementation.
+     *  Note that this "base method" is final and cannot be overridden,
+     *  so you can count on it to reflect what is happening at the player level.
+     */
+    mx_internal final function $removeChildAt(index:int):DisplayObject
+    {
+        return super.removeChild(super.getChildAt(index));
+    }
 }
 
 }

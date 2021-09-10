@@ -12,9 +12,9 @@
 package mx.managers
 {
 
+import mx.core.IUIComponent;
 [ExcludeClass]
 
-import mx.core.IUIComponent;
 
 /**
  *  @private

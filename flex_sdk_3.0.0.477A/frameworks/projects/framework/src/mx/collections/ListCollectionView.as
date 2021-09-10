@@ -42,7 +42,7 @@ use namespace mx_internal;
  */
 [Event(name="collectionChange", type="mx.events.CollectionEvent")]
 
-[ResourceBundle("collections")]
+// [ResourceBundle("collections")]
     
 /**
  * The ListCollectionView class adds the properties and methods of the
@@ -1473,7 +1473,7 @@ use namespace mx_internal;
  */
 [Event(name="cursorUpdate", type="mx.events.FlexEvent")]
 
-[ResourceBundle("collections")]
+// [ResourceBundle("collections")]
 
 /**
  *  @private

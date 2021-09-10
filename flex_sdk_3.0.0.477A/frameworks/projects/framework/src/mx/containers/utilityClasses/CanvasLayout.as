@@ -31,7 +31,7 @@ import flash.utils.Dictionary;
 
 [ExcludeClass]
 
-[ResourceBundle("containers")]
+// [ResourceBundle("containers")]
 
 /**
  *  @private

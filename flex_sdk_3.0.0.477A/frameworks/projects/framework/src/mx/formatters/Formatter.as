@@ -21,7 +21,7 @@ import mx.resources.ResourceManager;
 
 use namespace mx_internal;
 
-[ResourceBundle("formatters")]
+// [ResourceBundle("formatters")]
 
 /**
  *  The Formatter class is the base class for all data formatters.

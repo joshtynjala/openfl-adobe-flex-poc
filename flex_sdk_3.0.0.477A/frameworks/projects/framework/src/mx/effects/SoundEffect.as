@@ -59,7 +59,7 @@ import mx.resources.ResourceManager;
  */
 [Event(name="progress", type="flash.events.ProgressEvent")]
 
-[ResourceBundle("effects")]
+// [ResourceBundle("effects")]
 
 /**
  *  The SoundEffect class plays an MP3 audio file. 

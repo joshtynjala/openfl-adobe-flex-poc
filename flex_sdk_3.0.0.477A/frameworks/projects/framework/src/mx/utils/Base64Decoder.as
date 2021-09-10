@@ -16,7 +16,7 @@ import flash.utils.ByteArray;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
-[ResourceBundle("utils")]
+// [ResourceBundle("utils")]
 
 /**
  * A utility class to decode a Base64 encoded String to a ByteArray.

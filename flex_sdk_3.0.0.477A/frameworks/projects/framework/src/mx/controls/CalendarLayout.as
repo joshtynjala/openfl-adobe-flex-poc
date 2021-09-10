@@ -97,7 +97,7 @@ include "../styles/metadata/TextStyles.as"
 
 [ExcludeClass]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
 	
 /**
  *  @private

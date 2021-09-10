@@ -17,7 +17,7 @@ import mx.managers.SystemManager;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
 
 /**
  *  The VideoError class represents the error codes for errors 

@@ -34,7 +34,7 @@ use namespace mx_internal;
 
 [ExcludeClass]
 
-[ResourceBundle("styles")]
+// [ResourceBundle("styles")]
     
 /**
  *  @private
@@ -354,7 +354,7 @@ public class StyleManagerImpl implements IStyleManager2
 		}
 		
 		if (!stylesRoot)
-			stylesRoot = _selectors["global"].addStyleToProtoChain({}, null);
+			stylesRoot = _selectors["global"].mx_internal::addStyleToProtoChain({}, null);
     }
     
     /**
@@ -508,8 +508,8 @@ public class StyleManagerImpl implements IStyleManager2
         {
         	// Type as Object to avoid dependency on SystemManager or WindowedSystemManager
             var sm:Object = sms[i];
-            sm.regenerateStyleCache(true);
-            sm.notifyStyleChangeInChildren(null, true);
+            sm.mx_internal::regenerateStyleCache(true);
+            sm.mx_internal::notifyStyleChangeInChildren(null, true);
         }
     }
 

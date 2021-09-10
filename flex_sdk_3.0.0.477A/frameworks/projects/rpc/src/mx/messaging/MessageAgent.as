@@ -83,7 +83,7 @@ use namespace mx_internal;
  */
 [Event(name="propertyChange", type="mx.events.PropertyChangeEvent")]
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  The MessageAgent class provides the basic low-level functionality common to

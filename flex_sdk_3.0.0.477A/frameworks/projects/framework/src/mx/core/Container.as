@@ -193,7 +193,7 @@ include "../styles/metadata/TextStyles.as"
  */
 [Style(name="paddingTop", type="Number", format="Length", inherit="no")]
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 /**
  *  The Container class is an abstract base class for components that
@@ -604,22 +604,22 @@ public class Container extends UIComponent
      *  @private
      *  Propagate to children.
      */
-    override public function set doubleClickEnabled(value:Boolean):void
-    {
-        super.doubleClickEnabled = value;
+    // override public function set doubleClickEnabled(value:Boolean):void
+    // {
+    //     super.doubleClickEnabled = value;
 
-        if (contentPane)
-        {
-            var n:int = contentPane.numChildren;
-            for (var i:int = 0; i < n; i++)
-            {
-                var child:InteractiveObject =
-                    contentPane.getChildAt(i) as InteractiveObject;
-                if (child)
-                    child.doubleClickEnabled = value;
-            }
-        }
-    }
+    //     if (contentPane)
+    //     {
+    //         var n:int = contentPane.numChildren;
+    //         for (var i:int = 0; i < n; i++)
+    //         {
+    //             var child:InteractiveObject =
+    //                 contentPane.getChildAt(i) as InteractiveObject;
+    //             if (child)
+    //                 child.doubleClickEnabled = value;
+    //         }
+    //     }
+    // }
 
     //----------------------------------
     //  enabled
@@ -803,7 +803,7 @@ public class Container extends UIComponent
             invalidateSize();
             invalidateDisplayList();
 
-            var p:IInvalidating = parent as IInvalidating;
+            var p:IInvalidating = _parent as IInvalidating;
             if (p)
             {
                 p.invalidateSize();
@@ -2553,16 +2553,16 @@ public class Container extends UIComponent
         {
             actualCreationPolicy = creationPolicy;
         }
-        else if (parent is Container)
+        else if (_parent is Container)
         {
-            if (Container(parent).actualCreationPolicy ==
+            if (Container(_parent).actualCreationPolicy ==
                 ContainerCreationPolicy.QUEUED)
             {
                 actualCreationPolicy = ContainerCreationPolicy.AUTO;
             }
             else
             {
-                actualCreationPolicy = Container(parent).actualCreationPolicy;
+                actualCreationPolicy = Container(_parent).actualCreationPolicy;
             }
         }
 

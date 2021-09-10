@@ -143,7 +143,7 @@ use namespace mx_internal;
 
 [ExcludeClass]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
 
 /**
  *  @private

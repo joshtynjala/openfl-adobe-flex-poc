@@ -77,6 +77,7 @@ import mx.utils.GraphicsUtil;
 import mx.utils.StringUtil;
 import mx.validators.IValidatorListener;
 import mx.validators.ValidationResult;
+import flash.utils.getDefinitionByName;
 
 use namespace mx_internal;
 
@@ -716,10 +717,10 @@ include "../styles/metadata/AnchorStyles.as";
 
 [AccessibilityClass(implementation="mx.accessibility.UIComponentAccImpl")]
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 // skins resources aren't found because CSS visited by the compiler
-[ResourceBundle("skins")]
+// [ResourceBundle("skins")]
 
 /**
  *  The UIComponent class is the base class for all visual components,
@@ -1458,7 +1459,7 @@ public class UIComponent extends FlexSprite
      */
     public function get owner():DisplayObjectContainer
     {
-        return _owner ? _owner : parent;
+        return _owner ? _owner : _parent;
     }
 
     public function set owner(value:DisplayObjectContainer):void
@@ -1493,12 +1494,12 @@ public class UIComponent extends FlexSprite
      *  By convention, non-UIComponent objects use an <code>owner</code>
      *  property to reference the object to which they belong.
      */
-    override public function get parent():DisplayObjectContainer
-    {
-        // Flash PlaceObject tags can have super.parent set
-        // before we get to setting the _parent property.
-        return _parent ? _parent : super.parent;
-    }
+    // override public function get parent():DisplayObjectContainer
+    // {
+    //     // Flash PlaceObject tags can have super.parent set
+    //     // before we get to setting the _parent property.
+    //     return _parent ? _parent : super.parent;
+    // }
 
     //----------------------------------
     //  x
@@ -1645,7 +1646,7 @@ public class UIComponent extends FlexSprite
             invalidateProperties();
             invalidateDisplayList();
 
-            var p:IInvalidating = parent as IInvalidating;
+            var p:IInvalidating = _parent as IInvalidating;
             if (p && includeInLayout)
             {
                 p.invalidateSize();
@@ -1718,7 +1719,7 @@ public class UIComponent extends FlexSprite
             invalidateProperties();
             invalidateDisplayList();
 
-            var p:IInvalidating = parent as IInvalidating;
+            var p:IInvalidating = _parent as IInvalidating;
             if (p && includeInLayout)
             {
                 p.invalidateSize();
@@ -1937,33 +1938,33 @@ public class UIComponent extends FlexSprite
      *
      *  @default false
      */
-    override public function get doubleClickEnabled():Boolean
-    {
-        return super.doubleClickEnabled;
-    }
+    // override public function get doubleClickEnabled():Boolean
+    // {
+    //     return super.doubleClickEnabled;
+    // }
 
     /**
      *  @private
      *  Propagate to children.
      */
-    override public function set doubleClickEnabled(value:Boolean):void
-    {
-        super.doubleClickEnabled = value;
+    // override public function set doubleClickEnabled(value:Boolean):void
+    // {
+    //     super.doubleClickEnabled = value;
 
-        var childList:IChildList;
+    //     var childList:IChildList;
 
-        if (this is IRawChildrenContainer)
-            childList = IRawChildrenContainer(this).rawChildren;
-        else
-            childList = IChildList(this);
+    //     if (this is IRawChildrenContainer)
+    //         childList = IRawChildrenContainer(this).rawChildren;
+    //     else
+    //         childList = IChildList(this);
 
-        for (var i:int = 0; i < childList.numChildren; i++)
-        {
-            var child:InteractiveObject = childList.getChildAt(i) as InteractiveObject;
-            if (child)
-                child.doubleClickEnabled = value;
-        }
-    }
+    //     for (var i:int = 0; i < childList.numChildren; i++)
+    //     {
+    //         var child:InteractiveObject = childList.getChildAt(i) as InteractiveObject;
+    //         if (child)
+    //             child.doubleClickEnabled = value;
+    //     }
+    // }
 
     //----------------------------------
     //  enabled
@@ -2300,7 +2301,7 @@ public class UIComponent extends FlexSprite
      */
     public function get cursorManager():ICursorManager
     {
-        var o:DisplayObject = parent;
+        var o:DisplayObject = _parent;
 
         while (o)
         {
@@ -2340,7 +2341,7 @@ public class UIComponent extends FlexSprite
         if (_focusManager)
             return _focusManager;
 
-        var o:DisplayObject = parent;
+        var o:DisplayObject = _parent;
 
         while (o)
         {
@@ -2419,17 +2420,17 @@ public class UIComponent extends FlexSprite
         if (!_systemManager || _systemManagerDirty)
         {
             var r:DisplayObject = root;
-            if (r && !(r is Stage))
+            if (r && (r is ISystemManager))
             {
                 // If this object is attached to the display list, then
                 // the root property holds its SystemManager.
                 _systemManager = (r as ISystemManager);
             }
-          else if (r)
-            {
-                // if the root is the Stage, then we are in a second AIR window
-                _systemManager = Stage(r).getChildAt(0) as ISystemManager;
-            }
+        //   else if (r)
+        //     {
+        //         // if the root is the Stage, then we are in a second AIR window
+        //         _systemManager = Stage(r).getChildAt(0) as ISystemManager;
+        //     }
             else
             {
                 // If this object isn't attached to the display list, then
@@ -2803,11 +2804,11 @@ public class UIComponent extends FlexSprite
     {
         if (document == this)
         {
-            var p:IUIComponent = parent as IUIComponent;
+            var p:IUIComponent = _parent as IUIComponent;
             if (p)
                 return p.document;
 
-            var sm:ISystemManager = parent as ISystemManager;
+            var sm:ISystemManager = _parent as ISystemManager;
             if (sm)
                 return sm.document;
 
@@ -3372,7 +3373,7 @@ public class UIComponent extends FlexSprite
 
         _percentWidth = value;
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p)
         {
             p.invalidateSize();
@@ -3423,7 +3424,7 @@ public class UIComponent extends FlexSprite
 
         _percentHeight = value;
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p)
         {
             p.invalidateSize();
@@ -3654,7 +3655,7 @@ public class UIComponent extends FlexSprite
         // may change the measured height in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p)
         {
             p.invalidateSize();
@@ -3713,7 +3714,7 @@ public class UIComponent extends FlexSprite
         // may change the measured width in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p)
         {
             p.invalidateSize();
@@ -3775,7 +3776,7 @@ public class UIComponent extends FlexSprite
         // may change the measured height in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p)
         {
             p.invalidateSize();
@@ -3837,7 +3838,7 @@ public class UIComponent extends FlexSprite
         // may change the measured width in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p)
         {
             p.invalidateSize();
@@ -3900,7 +3901,7 @@ public class UIComponent extends FlexSprite
         // may change the measured height in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p && includeInLayout)
         {
             p.invalidateSize();
@@ -3963,7 +3964,7 @@ public class UIComponent extends FlexSprite
         // may change the measured width in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p && includeInLayout)
         {
             p.invalidateSize();
@@ -4010,7 +4011,7 @@ public class UIComponent extends FlexSprite
         {
             _includeInLayout = value;
 
-            var p:IInvalidating = parent as IInvalidating;
+            var p:IInvalidating = _parent as IInvalidating;
             if (p)
             {
                 p.invalidateSize();
@@ -4963,10 +4964,10 @@ public class UIComponent extends FlexSprite
      *  Note that this "base method" is final and cannot be overridden,
      *  so you can count on it to reflect what is happening at the player level.
      */
-    mx_internal final function $addChild(child:DisplayObject):DisplayObject
-    {
-        return super.addChild(child);
-    }
+    // mx_internal final function $addChild(child:DisplayObject):DisplayObject
+    // {
+    //     return super.addChild(child);
+    // }
 
     /**
      *  @private
@@ -4976,11 +4977,11 @@ public class UIComponent extends FlexSprite
      *  Note that this "base method" is final and cannot be overridden,
      *  so you can count on it to reflect what is happening at the player level.
      */
-    mx_internal final function $addChildAt(child:DisplayObject,
-                                           index:int):DisplayObject
-    {
-        return super.addChildAt(child, index);
-    }
+    // mx_internal final function $addChildAt(child:DisplayObject,
+    //                                        index:int):DisplayObject
+    // {
+    //     return super.addChildAt(child, index);
+    // }
 
     /**
      *  @private
@@ -4990,10 +4991,10 @@ public class UIComponent extends FlexSprite
      *  Note that this "base method" is final and cannot be overridden,
      *  so you can count on it to reflect what is happening at the player level.
      */
-    mx_internal final function $removeChild(child:DisplayObject):DisplayObject
-    {
-        return super.removeChild(child);
-    }
+    // mx_internal final function $removeChild(child:DisplayObject):DisplayObject
+    // {
+    //     return super.removeChild(child);
+    // }
 
     /**
      *  @private
@@ -5003,10 +5004,10 @@ public class UIComponent extends FlexSprite
      *  Note that this "base method" is final and cannot be overridden,
      *  so you can count on it to reflect what is happening at the player level.
      */
-    mx_internal final function $removeChildAt(index:int):DisplayObject
-    {
-        return super.removeChildAt(index);
-    }
+    // mx_internal final function $removeChildAt(index:int):DisplayObject
+    // {
+    //     return super.removeChildAt(index);
+    // }
 
     //--------------------------------------------------------------------------
     //
@@ -5097,8 +5098,8 @@ public class UIComponent extends FlexSprite
             else if (document is IFlexModule && document.moduleFactory != null)
                 UIComponent(child).moduleFactory = document.moduleFactory;
             
-            else if (parent is UIComponent && UIComponent(parent).moduleFactory != null)
-                UIComponent(child).moduleFactory = UIComponent(parent).moduleFactory;               
+            else if (_parent is UIComponent && UIComponent(_parent).moduleFactory != null)
+                UIComponent(child).moduleFactory = UIComponent(_parent).moduleFactory;               
         }
 
         // Set the font context in non-UIComponent children.
@@ -5397,7 +5398,7 @@ public class UIComponent extends FlexSprite
         {
             invalidatePropertiesFlag = true;
 
-            if (parent && UIComponentGlobals.layoutManager)
+            if (_parent && UIComponentGlobals.layoutManager)
                 UIComponentGlobals.layoutManager.invalidateProperties(this);
         }
     }
@@ -5425,7 +5426,7 @@ public class UIComponent extends FlexSprite
         {
             invalidateSizeFlag = true;
 
-            if (parent && UIComponentGlobals.layoutManager)
+            if (_parent && UIComponentGlobals.layoutManager)
                 UIComponentGlobals.layoutManager.invalidateSize(this);
         }
     }
@@ -5453,7 +5454,7 @@ public class UIComponent extends FlexSprite
         {
             invalidateDisplayListFlag = true;
 
-            if (parent && UIComponentGlobals.layoutManager)
+            if (_parent && UIComponentGlobals.layoutManager)
                 UIComponentGlobals.layoutManager.invalidateDisplayList(this);
         }
     }
@@ -5523,13 +5524,13 @@ public class UIComponent extends FlexSprite
         
         invalidateDisplayList();
 
-        if (parent is IInvalidating)
+        if (_parent is IInvalidating)
         {
             if (StyleManager.isParentSizeInvalidatingStyle(styleProp))
-                IInvalidating(parent).invalidateSize();
+                IInvalidating(_parent).invalidateSize();
 
             if (StyleManager.isParentDisplayListInvalidatingStyle(styleProp))
-                IInvalidating(parent).invalidateDisplayList();
+                IInvalidating(_parent).invalidateDisplayList();
         }
     }
 
@@ -5565,7 +5566,7 @@ public class UIComponent extends FlexSprite
         // If this component isn't parented,
         // then it doesn't know its text styles
         // and we can't compute a baselinePosition.
-        if (!parent)
+        if (!_parent)
             return false;
             
         // If this component hasn't been sized yet, assign it
@@ -5768,7 +5769,7 @@ public class UIComponent extends FlexSprite
             {
                 invalidateDisplayList();
 
-                var p:IInvalidating = parent as IInvalidating;
+                var p:IInvalidating = _parent as IInvalidating;
                 if (p)
                 {
                     p.invalidateSize();
@@ -6084,7 +6085,7 @@ public class UIComponent extends FlexSprite
         // may change the measured height in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p && includeInLayout)
         {
             p.invalidateSize();
@@ -6129,7 +6130,7 @@ public class UIComponent extends FlexSprite
         // may change the measured width in flow-based components.
         invalidateSize();
 
-        var p:IInvalidating = parent as IInvalidating;
+        var p:IInvalidating = _parent as IInvalidating;
         if (p && includeInLayout)
         {
             p.invalidateSize();
@@ -6190,7 +6191,7 @@ public class UIComponent extends FlexSprite
         if (invalidateDisplayListFlag)
         {
             // Check if our parent is the top level system manager
-            var sm:ISystemManager = parent as ISystemManager;
+            var sm:ISystemManager = _parent as ISystemManager;
             if (sm)
             {
                 if (sm == systemManager.topLevelSystemManager &&
@@ -6734,7 +6735,7 @@ public class UIComponent extends FlexSprite
     public function drawFocus(isFocused:Boolean):void
     {
         // Gets called by removeChild() after un-parented.
-        if (!parent)
+        if (!_parent)
             return;
 
         var focusObj:DisplayObject = getFocusObject();
@@ -6744,7 +6745,7 @@ public class UIComponent extends FlexSprite
         {
             var focusOwner:DisplayObjectContainer = focusPane.parent;
 
-            if (focusOwner != parent)
+            if (focusOwner != _parent)
             {
                 if (focusOwner)
                 {
@@ -6753,10 +6754,10 @@ public class UIComponent extends FlexSprite
                     else
                         IUIComponent(focusOwner).focusPane = null;
                 }
-                if (parent is ISystemManager)
-                    ISystemManager(parent).focusPane = focusPane;
+                if (_parent is ISystemManager)
+                    ISystemManager(_parent).focusPane = focusPane;
                 else
-                    IUIComponent(parent).focusPane = focusPane;
+                    IUIComponent(_parent).focusPane = focusPane;
             }
 
             var focusClass:Class = getStyle("focusSkin");
@@ -6868,8 +6869,8 @@ public class UIComponent extends FlexSprite
                 pt.x += x;
                 pt.y += y;
             }
-            pt = parent.localToGlobal(pt);
-            pt = parent.globalToLocal(pt);
+            pt = _parent.localToGlobal(pt);
+            pt = _parent.globalToLocal(pt);
             focusObj.move(pt.x, pt.y);
 
             if (focusObj is IInvalidating)
@@ -7322,7 +7323,7 @@ public class UIComponent extends FlexSprite
         if (nonInheritChain && nonInheritChain.effects)
             registerEffects(nonInheritChain.effects);
         
-        var p:IStyleClient = parent as IStyleClient;
+        var p:IStyleClient = _parent as IStyleClient;
         if (p)
         {
             var inheritChain:Object = p.inheritingStyles;
@@ -7416,7 +7417,7 @@ public class UIComponent extends FlexSprite
             myApplicationDomain = myRoot.loaderInfo.applicationDomain;
         }
 
-        var className:String = getQualifiedClassName(this)
+        var className:String = getQualifiedClassName(this);
         className = className.replace("::", ".");
         var cache:Array;
         cache = StyleManager.typeSelectorCache[className];
@@ -7462,7 +7463,8 @@ public class UIComponent extends FlexSprite
 
             try
             {
-                className = getQualifiedSuperclassName(myApplicationDomain.getDefinition(className));
+                // className = getQualifiedSuperclassName(myApplicationDomain.getDefinition(className));
+                className = getQualifiedSuperclassName(getDefinitionByName(className));
                 className = className.replace("::", ".");
             }
             catch(e:ReferenceError)
@@ -7785,7 +7787,7 @@ public class UIComponent extends FlexSprite
         var newValue:Number;
 
         if (newValue is String)
-            newValue = parseInt(String(value));
+            newValue = parseInt(String(value), 10);
         else
             newValue = Number(value);
 
@@ -8593,7 +8595,7 @@ public class UIComponent extends FlexSprite
         if (event.eventPhase != EventPhase.AT_TARGET)
             return;
 
-        if (parent is IContainer && IContainer(parent).creatingContentPane)
+        if (_parent is IContainer && IContainer(_parent).creatingContentPane)
         {
             event.stopImmediatePropagation();
             return;
@@ -8609,7 +8611,7 @@ public class UIComponent extends FlexSprite
         if (event.eventPhase != EventPhase.AT_TARGET)
             return;
 
-        if (parent is IContainer && IContainer(parent).creatingContentPane)
+        if (_parent is IContainer && IContainer(_parent).creatingContentPane)
         {
             event.stopImmediatePropagation();
             return;

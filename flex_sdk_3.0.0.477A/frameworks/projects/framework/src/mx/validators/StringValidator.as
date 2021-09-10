@@ -16,7 +16,7 @@ import mx.managers.ISystemManager;
 import mx.managers.SystemManager;
 import mx.utils.StringUtil;
 
-[ResourceBundle("validators")]
+// [ResourceBundle("validators")]
 
 /**
  *  The StringValidator class validates that the length of a String 

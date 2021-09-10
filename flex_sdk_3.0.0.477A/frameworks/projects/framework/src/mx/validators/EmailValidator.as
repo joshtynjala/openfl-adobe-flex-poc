@@ -12,7 +12,7 @@
 package mx.validators
 {
 
-[ResourceBundle("validators")]
+// [ResourceBundle("validators")]
     
 /**
  *  The EmailValidator class validates that a String has a single &#64; sign,

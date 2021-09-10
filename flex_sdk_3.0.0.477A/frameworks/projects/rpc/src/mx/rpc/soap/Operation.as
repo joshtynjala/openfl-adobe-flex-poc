@@ -46,7 +46,7 @@ use namespace mx_internal;
  */
 [Event(name="header", type="mx.rpc.events.HeaderEvent")]
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * An Operation used specifically by WebServices. An Operation is an individual

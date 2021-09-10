@@ -435,9 +435,9 @@ public class ScrollBar extends UIComponent
      *  Scrollbars cannot be doubleClickEnabled.
      *  It messes up fast clicking on its buttons.
      */
-    override public function set doubleClickEnabled(value:Boolean):void
-    {
-    }
+    // override public function set doubleClickEnabled(value:Boolean):void
+    // {
+    // }
 
     //----------------------------------
     //  enabled

@@ -103,7 +103,7 @@ use namespace mx_internal;
 
 [IconFile("FileSystemDataGrid.png")]
 
-[ResourceBundle("aircontrols")]
+// [ResourceBundle("aircontrols")]
 
 /**
  *  The FileSystemDataGrid control lets you display the contents of a

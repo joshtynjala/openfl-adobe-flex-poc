@@ -358,7 +358,7 @@ use namespace mx_internal;
 //  Other metadata
 //--------------------------------------
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 /**
  *  The WindowedApplication defines the application container

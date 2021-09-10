@@ -125,7 +125,7 @@ include "../styles/metadata/ModalTransparencyStyles.as";
  */
 [Frame(factoryClass="mx.managers.SystemManager")]
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 /**
  *  Flex defines a default, or Application, container that lets you start
@@ -1142,35 +1142,35 @@ public class Application extends LayoutContainer
      */
     private function initContextMenu():void
     {
-    	// context menu already set
-    	// nothing to init
-    	if (flexContextMenu != null)
-    	{
-    		// make sure we set it back on systemManager b/c it may have been overriden by now
-    		if (systemManager is InteractiveObject)
-        		InteractiveObject(systemManager).contextMenu = contextMenu;
-        	return;
-    	}
+    	// // context menu already set
+    	// // nothing to init
+    	// if (flexContextMenu != null)
+    	// {
+    	// 	// make sure we set it back on systemManager b/c it may have been overriden by now
+    	// 	if (systemManager is InteractiveObject)
+        // 		InteractiveObject(systemManager).contextMenu = contextMenu;
+        // 	return;
+    	// }
     	
-        var defaultMenu:ContextMenu = new ContextMenu();
-        defaultMenu.hideBuiltInItems();
-        defaultMenu.builtInItems.print = true;
+        // var defaultMenu:ContextMenu = new ContextMenu();
+        // defaultMenu.hideBuiltInItems();
+        // defaultMenu.builtInItems.print = true;
 
-        if (_viewSourceURL)
-        {
-        	// don't worry! this gets updated in resourcesChanged()
-            const caption:String = resourceManager.getString("core", "viewSource");
+        // if (_viewSourceURL)
+        // {
+        // 	// don't worry! this gets updated in resourcesChanged()
+        //     const caption:String = resourceManager.getString("core", "viewSource");
             
-            viewSourceCMI = new ContextMenuItem(caption, true);
-            viewSourceCMI.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
+        //     viewSourceCMI = new ContextMenuItem(caption, true);
+        //     viewSourceCMI.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
             
-            defaultMenu.customItems.push(viewSourceCMI);
-        }
+        //     defaultMenu.customItems.push(viewSourceCMI);
+        // }
 
-        contextMenu = defaultMenu;
+        // contextMenu = defaultMenu;
         
-        if (systemManager is InteractiveObject)
-        	InteractiveObject(systemManager).contextMenu = defaultMenu;
+        // if (systemManager is InteractiveObject)
+        // 	InteractiveObject(systemManager).contextMenu = defaultMenu;
     }
 
     /**

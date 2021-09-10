@@ -18,7 +18,7 @@ import mx.managers.SystemManager;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
-[ResourceBundle("logging")]
+// [ResourceBundle("logging")]
 
 /**
  *  Provides pseudo-hierarchical logging capabilities with multiple format and

@@ -39,7 +39,7 @@ use namespace mx_internal;
  */
 [Event(name="message", type="mx.messaging.events.MessageEvent")]
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  The AbstractConsumer is the base class for both the Consumer and

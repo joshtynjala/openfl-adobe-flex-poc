@@ -19,7 +19,7 @@ import mx.resources.ResourceManager;
 import mx.utils.StringUtil;
 import mx.validators.IValidatorListener;
 
-[ResourceBundle("validators")]
+// [ResourceBundle("validators")]
 
 /**
  *  The CreditCardValidator class validates that a credit card number

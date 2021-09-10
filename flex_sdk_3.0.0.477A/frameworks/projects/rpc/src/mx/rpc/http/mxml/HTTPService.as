@@ -35,7 +35,7 @@ import mx.validators.Validator;
 
 use namespace mx_internal;
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * You use the <code>&lt;mx:HTTPService&gt;</code> tag to represent an

@@ -15,7 +15,7 @@ package mx.validators
 import mx.managers.ISystemManager;
 import mx.managers.SystemManager;
 
-[ResourceBundle("validators")]
+// [ResourceBundle("validators")]
 
 /**
  *  The NumberValidator class ensures that a String represents a valid number.

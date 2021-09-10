@@ -31,7 +31,7 @@ import mx.resources.ResourceManager;
 
 use namespace mx_internal;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  The PollingChannel class provides the polling behavior that all polling channels in the messaging
@@ -652,7 +652,7 @@ import mx.resources.ResourceManager;
 
 use namespace mx_internal;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  @private

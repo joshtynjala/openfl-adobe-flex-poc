@@ -30,7 +30,7 @@ import mx.utils.ObjectUtil;
 
 use namespace mx_internal;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  This class provides access to the server messaging configuration information.

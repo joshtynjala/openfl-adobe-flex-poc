@@ -76,7 +76,7 @@ use namespace mx_internal;
 
 [RequiresDataBinding(true)]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
     
 /**
  *  The Alert control is a pop-up dialog box that can contain a message,
@@ -740,15 +740,15 @@ public class Alert extends Panel
         {
             var x:Number;
             var y:Number;
-            if (parent == systemManager)
+            if (_parent == systemManager)
             {
                 x = (screen.width - measuredWidth) / 2;
                 y = (screen.height - measuredHeight) / 2;
             }
             else
             {
-                x = (parent.width - measuredWidth) / 2;
-                y = (parent.height - measuredHeight) / 2;
+                x = (_parent.width - measuredWidth) / 2;
+                y = (_parent.height - measuredHeight) / 2;
             }
 
             // Set my position, because my parent won't do it for me.

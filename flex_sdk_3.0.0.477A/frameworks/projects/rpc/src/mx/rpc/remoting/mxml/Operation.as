@@ -33,7 +33,7 @@ import mx.validators.Validator;
 
 use namespace mx_internal;
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * The Operation used for RemoteObject when created in an MXML document.

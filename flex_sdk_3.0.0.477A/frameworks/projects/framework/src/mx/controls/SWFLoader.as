@@ -186,7 +186,7 @@ use namespace mx_internal;
 
 [IconFile("SWFLoader.png")]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
 
 /**
  *  The SWFLoader control loads and displays a specified SWF file.

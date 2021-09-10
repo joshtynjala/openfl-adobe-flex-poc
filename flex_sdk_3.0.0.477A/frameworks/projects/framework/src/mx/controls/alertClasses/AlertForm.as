@@ -153,7 +153,7 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 		createTextField(-1);
 
 		// Create the icon object, if any.
-		var iconClass:Class = Alert(parent).iconClass;
+		var iconClass:Class = Alert(_parent).iconClass;
 		if (iconClass && !icon)
 		{
 			icon = new iconClass();
@@ -162,7 +162,7 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 
 		// Create the button objects
 
-		var alert:Alert = Alert(parent);
+		var alert:Alert = Alert(_parent);
 		
 		var buttonFlags:uint = alert.buttonFlags;
 		var defaultButtonFlag:uint = alert.defaultButtonFlag;
@@ -233,12 +233,12 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 		{
 			defaultButtonChanged = false;
 
-			Alert(parent).defaultButton = defaultButton;
+			Alert(_parent).defaultButton = defaultButton;
 
-			if (parent is IFocusManagerContainer)
+			if (_parent is IFocusManagerContainer)
 			{
-				var sm:ISystemManager = Alert(parent).systemManager;
-				sm.activate(IFocusManagerContainer(parent));
+				var sm:ISystemManager = Alert(_parent).systemManager;
+				sm.activate(IFocusManagerContainer(_parent));
 			}
 			defaultButton.setFocus();
 		}
@@ -252,9 +252,9 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 		super.measure();
 
 		// Get the width of the title text
-		var title:String = Alert(parent).title;
+		var title:String = Alert(_parent).title;
 		var lineMetrics:TextLineMetrics =
-			Alert(parent).getTitleTextField().
+			Alert(_parent).getTitleTextField().
 			getUITextFormat().measureText(title);
 
 		// Calculate the width based solely on the title and the buttons
@@ -425,7 +425,7 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 			textField = IUITextField(createInFontContext(UITextField));
 
 			textField.styleName = this;
-			textField.text = Alert(parent).text;
+			textField.text = Alert(_parent).text;
 			textField.multiline = true;
 			textField.wordWrap = true;
 			textField.selectable = true;
@@ -468,7 +468,7 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 
 		button.addEventListener(MouseEvent.CLICK, clickHandler);
 		button.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
-        button.owner = parent;
+        button.owner = _parent;
 		addChild(button);
 
 		button.setActualSize(Alert.buttonWidth, Alert.buttonHeight);
@@ -484,7 +484,7 @@ public class AlertForm extends UIComponent implements IFontContextComponent
      */
 	private function removeAlert(buttonPressed:String):void
 	{
-		var alert:Alert = Alert(parent);
+		var alert:Alert = Alert(_parent);
 
 		alert.visible = false;
 
@@ -514,7 +514,7 @@ public class AlertForm extends UIComponent implements IFontContextComponent
 	 */
 	override protected function keyDownHandler(event:KeyboardEvent):void
 	{
-		var buttonFlags:uint = Alert(parent).buttonFlags;
+		var buttonFlags:uint = Alert(_parent).buttonFlags;
 
 		if (event.keyCode == Keyboard.ESCAPE)
 		{

@@ -14,7 +14,7 @@ package mx.core
 
 import mx.resources.ResourceManager;
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 /** 
  *  This class controls the backward-compatibility of the framework.
@@ -230,9 +230,9 @@ public class FlexVersion
     {
         var pieces:Array = value.split(".");
 
-        var major:uint = parseInt(pieces[0]);
-        var minor:uint = parseInt(pieces[1]);
-        var update:uint = parseInt(pieces[2]);
+        var major:uint = parseInt(pieces[0], 10);
+        var minor:uint = parseInt(pieces[1], 10);
+        var update:uint = parseInt(pieces[2], 10);
 
         compatibilityVersion = (major << 24) + (minor << 16) + update;
     }
@@ -251,9 +251,9 @@ public class FlexVersion
     {
         var pieces:Array = value.split(".");
 
-        var major:uint = parseInt(pieces[0]);
-        var minor:uint = parseInt(pieces[1]);
-        var update:uint = parseInt(pieces[2]);
+        var major:uint = parseInt(pieces[0], 10);
+        var minor:uint = parseInt(pieces[1], 10);
+        var update:uint = parseInt(pieces[2], 10);
 
         _compatibilityVersion = (major << 24) + (minor << 16) + update;
     }

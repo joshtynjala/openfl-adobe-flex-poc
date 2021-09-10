@@ -220,21 +220,21 @@ public class Binding
             wrappedFunctionSuccessful = true;
             return result;
         }
-        catch(itemPendingError:ItemPendingError)
-        {
-            itemPendingError.addResponder(new EvalBindingResponder(this, object));
-            if (BindingManager.debugDestinationStrings[destString])
-            {
-                trace("Binding: destString = " + destString + ", error = " + itemPendingError);
-            }
-        }
-        catch(rangeError:RangeError)
-        {
-            if (BindingManager.debugDestinationStrings[destString])
-            {
-                trace("Binding: destString = " + destString + ", error = " + rangeError);
-            }
-        }
+        // catch(itemPendingError:ItemPendingError)
+        // {
+        //     itemPendingError.addResponder(new EvalBindingResponder(this, object));
+        //     if (BindingManager.debugDestinationStrings[destString])
+        //     {
+        //         trace("Binding: destString = " + destString + ", error = " + itemPendingError);
+        //     }
+        // }
+        // catch(rangeError:RangeError)
+        // {
+        //     if (BindingManager.debugDestinationStrings[destString])
+        //     {
+        //         trace("Binding: destString = " + destString + ", error = " + rangeError);
+        //     }
+        // }
         catch(error:Error)
         {
             // Certain errors are normal when executing a srcFunc or destFunc,

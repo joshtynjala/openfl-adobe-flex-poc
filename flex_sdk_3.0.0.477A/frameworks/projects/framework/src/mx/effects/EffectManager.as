@@ -37,7 +37,7 @@ import mx.resources.ResourceManager;
 
 use namespace mx_internal;
 
-[ResourceBundle("effects")]
+// [ResourceBundle("effects")]
 
 /**
  *  The EffectManager class listens for events, such as the <code>show</code>

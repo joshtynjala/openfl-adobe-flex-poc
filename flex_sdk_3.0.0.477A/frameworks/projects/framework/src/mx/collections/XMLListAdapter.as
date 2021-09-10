@@ -43,7 +43,7 @@ import mx.utils.UIDUtil;
 
 [ExcludeClass]
 
-[ResourceBundle("collections")]
+// [ResourceBundle("collections")]
 
 /**
  *  @private

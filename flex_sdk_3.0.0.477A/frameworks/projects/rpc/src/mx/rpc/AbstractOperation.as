@@ -33,7 +33,7 @@ use namespace mx_internal;
  */
 [Event(name="fault", type="mx.rpc.events.FaultEvent")]
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * The AbstractOperation class represents an individual method on a

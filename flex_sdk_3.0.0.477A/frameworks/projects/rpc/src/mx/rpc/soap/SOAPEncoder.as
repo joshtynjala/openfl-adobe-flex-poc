@@ -32,7 +32,7 @@ import mx.rpc.xml.SchemaDatatypes;
 import mx.rpc.xml.SchemaMarshaller;
 import mx.rpc.xml.XMLEncoder;
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 [ExcludeClass]
 

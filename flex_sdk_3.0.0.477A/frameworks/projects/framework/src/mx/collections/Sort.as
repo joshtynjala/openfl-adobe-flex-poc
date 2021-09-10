@@ -26,7 +26,7 @@ use namespace mx_internal;
 
 [DefaultProperty("fields")]
 
-[ResourceBundle("collections")]
+// [ResourceBundle("collections")]
     
 /**
  *  Provides the sorting information required to establish a sort on an

@@ -101,7 +101,7 @@ use namespace mx_internal;
 
 [IconFile("FileSystemList.png")]
 
-[ResourceBundle("aircontrols")]
+// [ResourceBundle("aircontrols")]
 
 /**
  *  The FileSystemList control lets you display the contents of a

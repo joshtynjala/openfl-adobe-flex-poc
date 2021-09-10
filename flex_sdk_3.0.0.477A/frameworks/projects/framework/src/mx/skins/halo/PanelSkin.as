@@ -21,6 +21,9 @@ import mx.core.EdgeMetrics;
 import mx.core.FlexVersion;
 import mx.core.IUIComponent;
 import mx.core.mx_internal;
+import flash.utils.getQualifiedSuperclassName;
+import flash.utils.getDefinitionByName;
+import mx.containers.Panel;
 
 use namespace mx_internal;
 
@@ -268,29 +271,30 @@ public class PanelSkin extends HaloBorder
 
 	static private function isPanel(parent:Object):Boolean
 	{
-		var s:String = getQualifiedClassName(parent);
-		if (panels[s] == 1)
-			return true;
+        return parent is Panel;
+		// var s:String = getQualifiedClassName(parent);
+		// if (panels[s] == 1)
+		// 	return true;
 
-		if (panels[s] == 0)
-			return false;
+		// if (panels[s] == 0)
+		// 	return false;
 
-		if (s == "mx.containers::Panel")
-		{
-			panels[s] == 1;
-			return true;
-		}
+		// if (s == "mx.containers::Panel")
+		// {
+		// 	panels[s] == 1;
+		// 	return true;
+		// }
 
-		var x:XML = describeType(parent);
-		var xmllist:XMLList = x.extendsClass.(@type == "mx.containers::Panel");
-		if (xmllist.length() == 0)
-		{
-			panels[s] = 0;
-			return false;
-		}
+		// var x:XML = describeType(parent);
+		// var xmllist:XMLList = x.extendsClass.(@type == "mx.containers::Panel");
+		// if (xmllist.length() == 0)
+		// {
+		// 	panels[s] = 0;
+		// 	return false;
+		// }
 		
-		panels[s] = 1;
-		return true;
+		// panels[s] = 1;
+		// return true;
 	}
 
 }

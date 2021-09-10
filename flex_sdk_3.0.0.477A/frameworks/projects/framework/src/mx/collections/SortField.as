@@ -24,7 +24,7 @@ import mx.utils.ObjectUtil;
 
 use namespace mx_internal;
 
-[ResourceBundle("collections")]
+// [ResourceBundle("collections")]
     
 /**
  *  Provides the sorting information required to establish a sort on a field

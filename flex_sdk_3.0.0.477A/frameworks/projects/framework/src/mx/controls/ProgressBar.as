@@ -171,7 +171,7 @@ include "../styles/metadata/TextStyles.as"
 
 [IconFile("ProgressBar.png")]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
     
 /**
  *  The ProgressBar control provides a visual representation of the progress of a task over

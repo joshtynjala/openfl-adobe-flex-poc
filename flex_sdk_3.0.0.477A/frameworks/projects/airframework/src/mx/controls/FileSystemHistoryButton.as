@@ -40,7 +40,7 @@ use namespace mx_internal;
 
 [IconFile("FileSystemHistoryButton.png")]
 
-[ResourceBundle("aircontrols")]
+// [ResourceBundle("aircontrols")]
 
 /**
  *  The FileSystemHistoryButton control defines a single control

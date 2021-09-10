@@ -159,7 +159,7 @@ include "../styles/metadata/PaddingStyles.as"
 
 [IconFile("TextArea.png")]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
     
 /**
  *  The TextArea control is a multiline text field

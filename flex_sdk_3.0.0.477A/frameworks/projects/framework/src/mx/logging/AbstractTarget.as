@@ -20,7 +20,7 @@ import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 import mx.utils.UIDUtil;
 
-[ResourceBundle("logging")]
+// [ResourceBundle("logging")]
 
 /**
  *  This class provides the basic functionality required by the logging framework 

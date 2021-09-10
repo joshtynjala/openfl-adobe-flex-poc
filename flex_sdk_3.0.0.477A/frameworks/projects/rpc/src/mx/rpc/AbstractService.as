@@ -50,7 +50,7 @@ use namespace mx_internal;
  */
 [Event(name="fault", type="mx.rpc.events.FaultEvent")]
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 [Bindable(event="operationsChange")]
 

@@ -33,7 +33,7 @@ import mx.validators.Validator;
 
 use namespace mx_internal;
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
 * An Operation used specifically by WebServices. An Operation is an individual method on a service. An Operation can be called either by invoking the function of the same name on the service or by accessing the Operation

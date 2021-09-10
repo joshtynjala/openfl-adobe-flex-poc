@@ -15,8 +15,8 @@ package mx.formatters
 import mx.managers.ISystemManager;
 import mx.managers.SystemManager;
 
-[ResourceBundle("formatters")]
-[ResourceBundle("SharedResources")]
+// [ResourceBundle("formatters")]
+// [ResourceBundle("SharedResources")]
 
 /**
  *  The NumberFormatter class formats a valid number

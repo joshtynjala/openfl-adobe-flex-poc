@@ -46,7 +46,7 @@ use namespace mx_internal;
  */
 [Event(name="load", type="mx.rpc.soap.LoadEvent")]
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * The WebService class provides access to SOAP-based web services on remote

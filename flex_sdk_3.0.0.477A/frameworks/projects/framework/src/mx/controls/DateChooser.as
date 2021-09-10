@@ -373,8 +373,8 @@ include "../styles/metadata/TextStyles.as"
 
 [RequiresDataBinding(true)]
 
-[ResourceBundle("controls")]
-[ResourceBundle("SharedResources")]
+// [ResourceBundle("controls")]
+// [ResourceBundle("SharedResources")]
 
 /**
  *  The DateChooser control displays the name of a month, the year,

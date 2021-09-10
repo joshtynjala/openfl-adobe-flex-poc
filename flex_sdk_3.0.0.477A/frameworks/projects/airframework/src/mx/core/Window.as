@@ -356,7 +356,7 @@ use namespace mx_internal;
 
 [IconFile("Window.png")]
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
 
 /**
  *  The Window is a top-level container for additional windows

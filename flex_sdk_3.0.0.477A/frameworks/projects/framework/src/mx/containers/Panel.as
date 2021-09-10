@@ -1764,8 +1764,8 @@ public class Panel extends Container
      */
     protected function startDragging(event:MouseEvent):void
     {
-        regX = event.stageX - x;
-        regY = event.stageY - y;
+        regX = event.stageX / systemManager["scaleX"] - x;
+        regY = event.stageY / systemManager["scaleY"] - y;
         
         systemManager.addEventListener(
             MouseEvent.MOUSE_MOVE, systemManager_mouseMoveHandler, true);
@@ -1876,7 +1876,7 @@ public class Panel extends Container
     	// changes a lot -- but this listener only exists during a drag.
     	event.stopImmediatePropagation();
     	
-        move(event.stageX - regX, event.stageY - regY);
+        move(event.stageX / systemManager["scaleX"] - regX, event.stageY / systemManager["scaleY"] - regY);
     }
 
     /**

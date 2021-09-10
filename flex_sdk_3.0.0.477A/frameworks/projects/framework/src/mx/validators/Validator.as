@@ -46,8 +46,8 @@ import mx.resources.ResourceManager;
 //  Other metadata
 //--------------------------------------
 
-[ResourceBundle("core")]
-[ResourceBundle("validators")]
+// [ResourceBundle("core")]
+// [ResourceBundle("validators")]
 
 /**
  *  The Validator class is the base class for all Flex validators. 

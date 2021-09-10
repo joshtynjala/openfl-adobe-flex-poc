@@ -23,7 +23,7 @@ import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 import mx.utils.HexDecoder;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 [ExcludeClass]
 

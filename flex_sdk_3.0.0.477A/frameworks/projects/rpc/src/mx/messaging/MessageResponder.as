@@ -20,7 +20,7 @@ import mx.messaging.messages.ErrorMessage;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  The MessageResponder class handles a successful result or fault from a message

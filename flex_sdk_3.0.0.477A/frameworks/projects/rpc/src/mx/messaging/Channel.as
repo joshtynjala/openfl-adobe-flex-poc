@@ -72,7 +72,7 @@ use namespace mx_internal;
  */
 [Event(name="propertyChange", type="mx.events.PropertyChangeEvent")]
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  The Channel class is the base message channel class that all channels in the messaging

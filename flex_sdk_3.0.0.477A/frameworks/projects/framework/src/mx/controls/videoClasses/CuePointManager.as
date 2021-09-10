@@ -23,7 +23,7 @@ import mx.resources.ResourceManager;
 
 use namespace mx_internal;
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
     
 /**
  *  The CuePointManager class lets you use ActionScript code to 

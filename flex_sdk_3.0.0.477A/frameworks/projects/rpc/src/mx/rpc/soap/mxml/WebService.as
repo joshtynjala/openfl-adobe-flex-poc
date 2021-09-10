@@ -30,7 +30,7 @@ import mx.rpc.soap.WebService;
 
 use namespace mx_internal;
 
-[ResourceBundle("rpc")]
+// [ResourceBundle("rpc")]
 
 /**
  * The &lt;mx:WebService&gt; tag gives you access to the operations of SOAP-compliant

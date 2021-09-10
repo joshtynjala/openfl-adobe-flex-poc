@@ -17,7 +17,7 @@ import mx.managers.SystemManager;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
-[ResourceBundle("validators")]
+// [ResourceBundle("validators")]
 
 /**
  *  The PhoneNumberValidator class validates that a string

@@ -33,7 +33,7 @@ import mx.utils.ObjectUtil;
 
 use namespace mx_internal;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 /**
  *  The AMFChannel class provides the AMF support for messaging.

@@ -15,7 +15,7 @@ package mx.messaging.messages
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
 
-[ResourceBundle("messaging")]
+// [ResourceBundle("messaging")]
 
 [RemoteClass(alias="flex.messaging.messages.HTTPMessage")]
 

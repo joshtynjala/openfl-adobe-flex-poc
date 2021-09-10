@@ -40,7 +40,7 @@ include "../styles/metadata/LeadingStyle.as"
 include "../styles/metadata/PaddingStyles.as"
 include "../styles/metadata/TextStyles.as"
 
-[ResourceBundle("core")]
+// [ResourceBundle("core")]
     
 /**
  *  The UITextField class defines the component used by many Flex
@@ -414,12 +414,12 @@ public class UITextField extends FlexTextField
     /**
      *  The parent container or component for this component.
      */
-    override public function get parent():DisplayObjectContainer
-    {
-        // Flash PlaceObject tags can have super.parent set
-        // before we get to setting the _parent property.
-        return _parent ? _parent : super.parent;
-    }
+    // override public function get parent():DisplayObjectContainer
+    // {
+    //     // Flash PlaceObject tags can have super.parent set
+    //     // before we get to setting the _parent property.
+    //     return _parent ? _parent : super.parent;
+    // }
 
     //----------------------------------
     //  text
@@ -539,7 +539,7 @@ public class UITextField extends FlexTextField
         }
         
         // The text styles aren't known until there is a parent.
-        if (!parent)
+        if (!_parent)
             return NaN;
             
         // getLineMetrics() returns strange numbers for an empty string,
@@ -884,7 +884,7 @@ public class UITextField extends FlexTextField
         {
             _includeInLayout = value;
 
-            var p:IInvalidating = parent as IInvalidating;
+            var p:IInvalidating = _parent as IInvalidating;
             if (p)
             {
                 p.invalidateSize();
@@ -1291,7 +1291,7 @@ public class UITextField extends FlexTextField
 
         _styleName = value;
 
-        if (parent)
+        if (_parent)
         {
             StyleProtoChain.initTextField(this);
             styleChanged("styleName");
@@ -1311,7 +1311,7 @@ public class UITextField extends FlexTextField
      */
     public function get systemManager():ISystemManager
     {
-        var o:DisplayObject = parent;
+        var o:DisplayObject = _parent;
         while (o)
         {
             var ui:IUIComponent = o as IUIComponent;
@@ -1458,14 +1458,14 @@ public class UITextField extends FlexTextField
     /**
      *  @private
      */
-    override public function insertXMLText(beginIndex:int, endIndex:int, 
-                                           richText:String, 
-                                           pasting:Boolean = false):void
-    {
-        super.insertXMLText(beginIndex, endIndex, richText, pasting);
+    // override public function insertXMLText(beginIndex:int, endIndex:int, 
+    //                                        richText:String, 
+    //                                        pasting:Boolean = false):void
+    // {
+    //     super.insertXMLText(beginIndex, endIndex, richText, pasting);
         
-        dispatchEvent(new Event("textInsert"));
-    }
+    //     dispatchEvent(new Event("textInsert"));
+    // }
 
     /**
      *  @private
@@ -1597,13 +1597,13 @@ public class UITextField extends FlexTextField
         {        
             return inheritingStyles ?
                    inheritingStyles[styleProp] :
-                   IStyleClient(parent).getStyle(styleProp);
+                   IStyleClient(_parent).getStyle(styleProp);
         }
         else
         {       
             return nonInheritingStyles ?
                    nonInheritingStyles[styleProp] :
-                   IStyleClient(parent).getStyle(styleProp);
+                   IStyleClient(_parent).getStyle(styleProp);
         }   
     }
 
@@ -1657,8 +1657,8 @@ public class UITextField extends FlexTextField
         if (!invalidateDisplayListFlag)
         {
             invalidateDisplayListFlag = true;
-            if ("callLater" in parent)
-                Object(parent).callLater(validateNow);
+            if ("callLater" in _parent)
+                Object(_parent).callLater(validateNow);
         }
     }
 
@@ -1670,7 +1670,7 @@ public class UITextField extends FlexTextField
         // If we don't have a parent pointer yet, then any attempts to get
         // style information will fail.  Do nothing now - this function will
         // be called again when parentChanged is called.
-        if (!parent)
+        if (!_parent)
             return;
 
         if (!isNaN(explicitWidth) && super.width != explicitWidth)
@@ -1951,7 +1951,7 @@ public class UITextField extends FlexTextField
      */
     public function get owner():DisplayObjectContainer
     {
-        return _owner ? _owner : parent;
+        return _owner ? _owner : _parent;
     }
 
     public function set owner(value:DisplayObjectContainer):void

@@ -281,7 +281,7 @@ public class StyleProtoChain
 		// We'll start by getting the tail of the proto chain, which is:
 		//  - for non-inheriting styles, the global style sheet
 		//  - for inheriting styles, my parent's style object
-		var inheritChain:Object = IStyleClient(obj.parent).inheritingStyles;
+		var inheritChain:Object = IStyleClient(obj.mx_internal::_parent).inheritingStyles;
 		var nonInheritChain:Object = StyleManager.stylesRoot;
 		if (!inheritChain)
 			inheritChain = StyleManager.stylesRoot;

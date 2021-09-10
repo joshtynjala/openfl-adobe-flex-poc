@@ -26,7 +26,7 @@ import mx.resources.ResourceManager;
 
 [ExcludeClass]
 
-[ResourceBundle("controls")]
+// [ResourceBundle("controls")]
 
 /**
  *  @private

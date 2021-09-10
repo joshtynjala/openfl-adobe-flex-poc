@@ -182,7 +182,7 @@ public class SystemManager extends MovieClip
 	 *  @private
 	 *  An array of SystemManager instances loaded as child app domains
 	 */
-	mx_internal static var allSystemManagers:Dictionary = new Dictionary(true);
+	mx_internal static var allSystemManagers:Array = [];
 
 	/**
 	 *  @private
@@ -472,17 +472,17 @@ public class SystemManager extends MovieClip
 	 *  @private
 	 *  get the main stage if we're loaded into another swf in the same sandbox
 	 */
-	override public function get stage():Stage
-	{
-		var s:Stage = super.stage;
-		if (s)
-			return s;
+	// override public function get stage():Stage
+	// {
+	// 	var s:Stage = super.stage;
+	// 	if (s)
+	// 		return s;
 
-		if (!topLevel && _topLevelSystemManager)
-			return _topLevelSystemManager.stage;
+	// 	if (!topLevel && _topLevelSystemManager)
+	// 		return _topLevelSystemManager.stage;
 
-		return null;
-	}
+	// 	return null;
+	// }
 
     //----------------------------------
     //  width
@@ -1364,7 +1364,14 @@ public class SystemManager extends MovieClip
 	 */
 	public function create(... params):Object
 	{
-	    var mainClassName:String = info()["mainClassName"];
+		if(params[0])
+		{
+			var mainClassName:String = String(params[0]);
+		}
+		else
+		{
+	    	mainClassName = info()["mainClassName"];
+		}
 
 		if (mainClassName == null)
 	    {
@@ -1388,8 +1395,8 @@ public class SystemManager extends MovieClip
 	{
 		if (isStageRoot)
 		{
-			_width = stage.stageWidth;
-			_height = stage.stageHeight;
+			_width = stage.stageWidth / this.scaleX;
+			_height = stage.stageHeight / this.scaleY;
 		}
 		else
 		{
@@ -1500,8 +1507,8 @@ public class SystemManager extends MovieClip
 			preloaderBackgroundAlpha,
 			preloaderBackgroundImage,
 			preloaderBackgroundSize,
-			isStageRoot ? stage.stageWidth : loaderInfo.width,
-			isStageRoot ? stage.stageHeight : loaderInfo.height,
+			isStageRoot ? stage.stageWidth / this.scaleX : loaderInfo.width,
+			isStageRoot ? stage.stageHeight / this.scaleY : loaderInfo.height,
 		    null,
 			null,
 			rslList,
@@ -1605,7 +1612,7 @@ public class SystemManager extends MovieClip
 		// Need to check to see if the child is an UIComponent
 		// without actually linking in the UIComponent class.
 		if (uiComponentClassName && child is uiComponentClassName)
-			uiComponentClassName(child).initThemeColor();
+			uiComponentClassName(child).mx_internal::initThemeColor();
 
 		// Inform the component that it's style properties
 		// have been fully initialized. Most components won't care,
@@ -2073,13 +2080,14 @@ public class SystemManager extends MovieClip
 	{
 		var className:String = getQualifiedClassName(object);
 
-		for (var p:* in allSystemManagers)
+		for each (var p:* in allSystemManagers)
 		{
 			var sm:ISystemManager = p as ISystemManager;
 			var domain:ApplicationDomain = sm.loaderInfo.applicationDomain;
 			try
 			{
-				var cls:Class = Class(domain.getDefinition(className));
+				// var cls:Class = Class(domain.getDefinition(className));
+				var cls:Class = Class(sm.getDefinitionByName(className));
 				if (object is cls)
 					return sm as DisplayObject;
 			}
@@ -2166,7 +2174,7 @@ public class SystemManager extends MovieClip
 			var g:Graphics = mouseCatcher.graphics;
 			g.clear();
 			g.beginFill(0x000000, 0);
-			g.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			g.drawRect(0, 0, stage.stageWidth / this.scaleX, stage.stageHeight / this.scaleY);
 			g.endFill();
 		}
 	}
@@ -2182,7 +2190,7 @@ public class SystemManager extends MovieClip
 	 */
 	private function initHandler(event:Event):void
 	{
-		allSystemManagers[this] = this.loaderInfo.url;
+		allSystemManagers.push(this);//[this] = this.loaderInfo.url;
 	    root.loaderInfo.removeEventListener(Event.INIT, initHandler);
 
 	    var docFrame:int = (totalFrames == 1)? 0 : 1;
@@ -2194,6 +2202,9 @@ public class SystemManager extends MovieClip
 		}
 
 	    initialize();
+
+		// added for OpenFL
+		docFrameHandler();
 	}
 
 	/**
@@ -2267,14 +2278,14 @@ public class SystemManager extends MovieClip
 		// Note: getDefinitionByName() will return null
 		// if the class can't be found.
 
-		Singleton.registerClass("mx.managers::IBrowserManager",
-			Class(getDefinitionByName("mx.managers::BrowserManagerImpl")));
+		// Singleton.registerClass("mx.managers::IBrowserManager",
+		// 	Class(getDefinitionByName("mx.managers::BrowserManagerImpl")));
 
 		Singleton.registerClass("mx.managers::ICursorManager",
 			Class(getDefinitionByName("mx.managers::CursorManagerImpl")));
 
-		Singleton.registerClass("mx.managers::IHistoryManager",
-			Class(getDefinitionByName("mx.managers::HistoryManagerImpl")));
+		// Singleton.registerClass("mx.managers::IHistoryManager",
+		// 	Class(getDefinitionByName("mx.managers::HistoryManagerImpl")));
 
 		Singleton.registerClass("mx.managers::ILayoutManager",
 			Class(getDefinitionByName("mx.managers::LayoutManager")));
@@ -2285,21 +2296,21 @@ public class SystemManager extends MovieClip
 		Singleton.registerClass("mx.managers::IToolTipManager2",
 			Class(getDefinitionByName("mx.managers::ToolTipManagerImpl")));
 
-		if (Capabilities.playerType == "Desktop")
-		{
-			Singleton.registerClass("mx.managers::IDragManager",
-				Class(getDefinitionByName("mx.managers::NativeDragManagerImpl")));
+		// if (Capabilities.playerType == "Desktop")
+		// {
+		// 	Singleton.registerClass("mx.managers::IDragManager",
+		// 		Class(getDefinitionByName("mx.managers::NativeDragManagerImpl")));
 				
-			// Make this call to create a new instance of the DragManager singleton. 
-			// This will allow the application to receive NativeDragEvents that originate
-			// from the desktop.
-			// if this class is not registered, it's most likely because the NativeDragManager is not
-			// linked in correctly. all back to old DragManager.
-			if (Singleton.getClass("mx.managers::IDragManager") == null)
-				Singleton.registerClass("mx.managers::IDragManager",
-					Class(getDefinitionByName("mx.managers::DragManagerImpl")));
-		}
-		else
+		// 	// Make this call to create a new instance of the DragManager singleton. 
+		// 	// This will allow the application to receive NativeDragEvents that originate
+		// 	// from the desktop.
+		// 	// if this class is not registered, it's most likely because the NativeDragManager is not
+		// 	// linked in correctly. all back to old DragManager.
+		// 	if (Singleton.getClass("mx.managers::IDragManager") == null)
+		// 		Singleton.registerClass("mx.managers::IDragManager",
+		// 			Class(getDefinitionByName("mx.managers::DragManagerImpl")));
+		// }
+		// else
 		{ 
 			Singleton.registerClass("mx.managers::IDragManager",
 				Class(getDefinitionByName("mx.managers::DragManagerImpl")));
@@ -2450,10 +2461,10 @@ public class SystemManager extends MovieClip
 				
 				// stageWidth/stageHeight may have changed between initialize() and now,
 				// so refresh our _width and _height here. 
-				_width = stage.stageWidth;
-				_height = stage.stageHeight;
+				_width = stage.stageWidth / this.scaleX;
+				_height = stage.stageHeight / this.scaleY;
 				
-				IFlexDisplayObject(app).setActualSize(stage.stageWidth, stage.stageHeight);
+				IFlexDisplayObject(app).setActualSize(stage.stageWidth / this.scaleX, stage.stageHeight / this.scaleY);
 			}
 			else
 			{
@@ -2515,8 +2526,8 @@ public class SystemManager extends MovieClip
 	 */
 	private function Stage_resizeHandler(event:Event = null):void
 	{	
-		var w:Number = stage.stageWidth;
-		var h:Number = stage.stageHeight;
+		var w:Number = stage.stageWidth / this.scaleX;
+		var h:Number = stage.stageHeight / this.scaleY;
 		var m:Number = loaderInfo.width;
 		var n:Number = loaderInfo.height;
 
@@ -2571,8 +2582,8 @@ public class SystemManager extends MovieClip
 
 		if (isStageRoot)
 		{
-			_width = stage.stageWidth;
-			_height = stage.stageHeight;
+			_width = stage.stageWidth / this.scaleX;
+			_height = stage.stageHeight / this.scaleY;
 		}
 
 		if (event)
