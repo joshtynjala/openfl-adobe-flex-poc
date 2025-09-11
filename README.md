@@ -12,7 +12,11 @@ To see how the everything is bootstrapped, look at _index.template.html_ and _sr
 
 You will need to download [Apache Royale](https://royale.apache.org/) 0.9.9-SNAPSHOT. The 0.9.8 release will not work. I had to fix a couple of compiler issues to make this work, and they will be released in the next version of Royale.
 
-You will also need _playerglobal.swc_ from Adobe. You can download it from [Flash Player debug downloads](https://www.adobe.com/support/flashplayer/debug_downloads.html). Place it at _royale-asjs/frameworks/projects/libs/player/11.1/playerglobal.swc_ in the Royale SDK.
+You will also need _playerglobal.swc_ from Adobe. You can download it from the following URL:
+
+https://fpdownload.macromedia.com/get/flashplayer/updaters/32/playerglobal32_0.swc
+
+Place it at _royale-asjs/frameworks/projects/libs/player/11.1/playerglobal.swc_ in the Royale SDK.
 
 If you have Node.js installed, you can run the following command:
 
@@ -28,4 +32,4 @@ asjsc --debug=true +configname=js --targets=JSRoyale --html-template=index.templ
 
 On Windows, the command may need some minor tweaks.
 
-The **asjsc** command is located at _royale-asjs/js/bin/asjsc_ in the Royale SDK. On Windows, you should use _asjsc.bat_.
+The **asjsc** command is located at _royale-asjs/js/bin/asjsc_ in the Royale SDK. On Windows, you should use _asjsc.bat_ instead.
