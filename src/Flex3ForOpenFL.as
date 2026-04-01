@@ -74,7 +74,6 @@ class OpenFLSystemManager extends SystemManager {
         {
             return self;
         }
-        trace(Lib.current == this);
 		var loaderInfo:LoaderInfo = LoaderInfo["create"]();
 		this["__loaderInfo"] = loaderInfo;
 

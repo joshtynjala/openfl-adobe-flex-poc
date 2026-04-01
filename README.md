@@ -10,7 +10,7 @@ To see how the everything is bootstrapped, look at _index.template.html_ and _sr
 
 ## Compile Instructions
 
-You will need to download [Apache Royale](https://royale.apache.org/) 0.9.9-SNAPSHOT. The 0.9.8 release will not work. I had to fix a couple of compiler issues to make this work, and they will be released in the next version of Royale.
+You will need to download [Apache Royale](https://royale.apache.org/) 1.0.0-SNAPSHOT. The 0.9.12 release will not work. I had to fix a number of compiler issues to make this work, and they will be released in the next version of Royale.
 
 You will also need _playerglobal.swc_ from Adobe. You can download it from the following URL:
 
@@ -27,7 +27,7 @@ npx asconfigc --sdk path/to/royale-asjs
 Without Node.js, the following command works for me to compile the project on macOS:
 
 ```sh
-asjsc --debug=true +configname=js --targets=JSRoyale --html-template=index.template.html --source-path+=src --source-path+=flex_sdk_3.0.0.477A/frameworks/projects/framework/src --js-library-path+=\${royalelib}/js/libs/LanguageJS.swc --js-library-path+=\${royalelib}/js/libs/ReflectionJS.swc --js-external-library-path+=\${royalelib}/libs/player/11.1/playerglobal.swc --source-map=true -js-getter-prefix=get_ -js-setter-prefix=set_ -- src/Flex3ForOpenFL.as
+asjsc --debug=true +configname=js --targets=JSRoyale --html-template=index.template.html --source-path+=src --source-path+=flex_sdk_3.0.0.477A/frameworks/projects/framework/src --namespace+=http://www.adobe.com/2006/mxml,flex_sdk_3.0.0.477A/frameworks/projects/framework/manifest.xml --js-library-path+=\${royalelib}/js/libs/LanguageJS.swc --js-library-path+=\${royalelib}/js/libs/ReflectionJS.swc --js-external-library-path+=\${royalelib}/libs/player/11.1/playerglobal.swc --source-map=true -js-getter-prefix=get_ -js-setter-prefix=set_ -js-vector-emulation-class=openfl.Vector -js-vector-emulation-element-types=false -js-vector-emulation-literal-function=openfl.Vector.ofArray -js-vector-index-checks=false -children-as-data=false -- src/Flex3ForOpenFL.as
 ```
 
 On Windows, the command may need some minor tweaks.

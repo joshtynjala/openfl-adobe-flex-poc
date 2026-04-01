@@ -1,21 +1,19 @@
-<core:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-	xmlns:core="mx.core.*" xmlns:controls="mx.controls.*"
+<?xml version="1.0" encoding="UTF-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
 	preinitialize="onPreInitialize(event);"
 	initialize="onInitialize(event)"
 	creationComplete="onCreationComplete(event)"
 	applicationComplete="onApplicationComplete(event)">
-	<fx:Script>
+
+	<mx:Label text="Hello from Adobe Flex 3 in OpenFL"/>
+	<mx:Button id="button" label="Click Me" click="onButtonClick(event)"/>
+
+	<mx:Script>
 		<![CDATA[
 			import flash.events.MouseEvent;
 
 			import mx.controls.Alert;
-			import mx.controls.Button;
 			import mx.events.FlexEvent;
-			
-			public function generateMXMLAttributes(data:Array):void
-			{
-				MXMLDataInterpreter.generateMXMLProperties(this, data);
-			}
 
 			private function onPreInitialize(event:FlexEvent):void
 			{
@@ -25,18 +23,12 @@
 			private function onInitialize(event:FlexEvent):void
 			{
 				// trace("initialize");
-				var button:Button = new Button();
-				button.label = "Click Me";
-				button.addEventListener(MouseEvent.CLICK, onButtonClick);
-				button.x = 50.0;
-				button.y = 50.0;
-				this.addChild(button);
 			}
 
 			private function onButtonClick(button:MouseEvent):void
 			{
 				// trace("onButtonClick");
-				Alert.show("Hello from Adobe Flex 3 and OpenFL!", "Message", Alert.OK, this);
+				Alert.show("Pretty cool, right?", "Message", Alert.OK, this);
 
 			}
 
@@ -50,5 +42,5 @@
 				// trace("applicationComplete");
 			}
 		]]>
-	</fx:Script>
-</core:Application>
+	</mx:Script>
+</mx:Application>

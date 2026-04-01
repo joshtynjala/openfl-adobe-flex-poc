@@ -1,7 +1,7 @@
 {
 	"config": "js",
 	"compilerOptions": {
-		"targets": ["JSRoyale"],
+		"targets": ["JS"],
 		"html-template": "index.template.html",
 		"source-path": [
 			"src",
@@ -14,11 +14,22 @@
 		"js-external-library-path": [
 			"${royalelib}/libs/player/11.1/playerglobal.swc"
 		],
+		"namespace": [
+			{
+				"manifest": "flex_sdk_3.0.0.477A/frameworks/projects/framework/manifest.xml",
+				"uri": "http://www.adobe.com/2006/mxml"
+			}
+		],
 		"source-map": true
 	},
 	"additionalOptions": [
 		"-js-getter-prefix=get_",
-		"-js-setter-prefix=set_"
+		"-js-setter-prefix=set_",
+		"-js-vector-emulation-class=openfl.Vector",
+		"-js-vector-emulation-element-types=false",
+		"-js-vector-emulation-literal-function=openfl.Vector.ofArray",
+		"-js-vector-index-checks=false",
+		"-children-as-data=false"
 	],
 	"mainClass": "Flex3ForOpenFL"
 }
