@@ -23,13 +23,22 @@
 		"source-map": true
 	},
 	"additionalOptions": [
+		"-imports=flash.accessibility.*,flash.debugger.*,flash.display.*,flash.errors.*,flash.events.*,flash.external.*,flash.filters.*,flash.geom.*,flash.media.*,flash.net.*,flash.printing.*,flash.profiler.*,flash.system.*,flash.text.*,flash.ui.*,flash.utils.*,flash.xml.*","-binding-value-change-event=mx.events.PropertyChangeEvent",
+		"-binding-value-change-event-kind=mx.events.PropertyChangeEvent",
+		"-binding-value-change-event-type=propertyChange",
+		"-binding-event-handler-event=flash.events.Event",
+		"-binding-event-handler-class=flash.events.EventDispatcher",
+		"-binding-event-handler-interface=flash.events.IEventDispatcher",
+		"-states-class=mx.states.State",
+		"-component-factory-class=mx.core.ClassFactory",
+		"-component-factory-interface=mx.core.IFactory",
 		"-js-getter-prefix=get_",
 		"-js-setter-prefix=set_",
 		"-js-vector-emulation-class=openfl.Vector",
 		"-js-vector-emulation-element-types=false",
 		"-js-vector-emulation-literal-function=openfl.Vector.ofArray",
 		"-js-vector-index-checks=false",
-		"-children-as-data=false"
+		"-children-as-data=false",
 	],
 	"mainClass": "Flex3ForOpenFL"
 }
