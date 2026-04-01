@@ -39,6 +39,7 @@
 		"-js-vector-emulation-literal-function=openfl.Vector.ofArray",
 		"-js-vector-index-checks=false",
 		"-children-as-data=false",
+		"-warn-this-within-closure=false"
 	],
 	"mainClass": "Flex3ForOpenFL"
 }
