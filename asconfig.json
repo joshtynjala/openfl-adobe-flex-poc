@@ -23,7 +23,8 @@
 		"source-map": true
 	},
 	"additionalOptions": [
-		"-imports=flash.accessibility.*,flash.debugger.*,flash.display.*,flash.errors.*,flash.events.*,flash.external.*,flash.filters.*,flash.geom.*,flash.media.*,flash.net.*,flash.printing.*,flash.profiler.*,flash.system.*,flash.text.*,flash.ui.*,flash.utils.*,flash.xml.*","-binding-value-change-event=mx.events.PropertyChangeEvent",
+		"-imports=flash.accessibility.*,flash.debugger.*,flash.display.*,flash.errors.*,flash.events.*,flash.external.*,flash.filters.*,flash.geom.*,flash.media.*,flash.net.*,flash.printing.*,flash.profiler.*,flash.system.*,flash.text.*,flash.ui.*,flash.utils.*,flash.xml.*",
+		"-binding-value-change-event=mx.events.PropertyChangeEvent",
 		"-binding-value-change-event-kind=mx.events.PropertyChangeEvent",
 		"-binding-value-change-event-type=propertyChange",
 		"-binding-event-handler-event=flash.events.Event",
