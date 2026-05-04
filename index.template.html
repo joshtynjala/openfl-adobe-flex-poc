@@ -38,6 +38,10 @@ flash.utils.getDefinitionByName = function(name)
 };
 flash.utils.getQualifiedClassName = org.apache.royale.reflection.getQualifiedClassName;
 flash.utils.getQualifiedSuperclassName = org.apache.royale.reflection.getQualifiedSuperclassName;
+flash.utils.describeType = function()
+{
+	return new XML();
+}
 var stage = new openfl.display.Stage(0, 0, null, ${mainClass}, {
 	allowHighDPI: true
 });
