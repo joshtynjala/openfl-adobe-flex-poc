@@ -148,7 +148,7 @@ public class NumericStepperDownSkin extends Border
 		// Draw the background and border.
 		var g:Graphics = graphics;
 		
-		g..clear();
+		g.clear();
 		
 		switch (name)
 		{

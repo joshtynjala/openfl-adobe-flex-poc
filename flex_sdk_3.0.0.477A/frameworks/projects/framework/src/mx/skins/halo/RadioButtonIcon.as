@@ -352,9 +352,9 @@ public class RadioButtonIcon extends Border
 				radioColor = getStyle("disabledIconColor");
 				
 				// radio symbol
-				g..beginFill(radioColor);
-				g..drawCircle(r, r, 2);
-				g..endFill();
+				g.beginFill(radioColor);
+				g.drawCircle(r, r, 2);
+				g.endFill();
 				
 				break;
 			}
