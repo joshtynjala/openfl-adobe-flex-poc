@@ -51,6 +51,7 @@
 		"-js-vector-emulation-element-types=false",
 		"-js-vector-emulation-literal-function=openfl.Vector.ofArray",
 		"-js-vector-index-checks=false",
+		"-js-include-script+=scripts/flash.js",
 		"-children-as-data=false",
 		"-warn-this-within-closure=false"
 	],
