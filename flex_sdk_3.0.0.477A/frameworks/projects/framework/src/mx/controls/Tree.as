@@ -1947,7 +1947,7 @@ public class Tree extends List implements IIMESupport
             if (dispatchEvent)
                 eventAfterTween = item;
                 
-            tween = new Tween(this, 0, (open) ? yy : startY - yy, dur, 5);
+            tween = new Tween(this, 0, (open) ? yy : startY - yy, dur, 5, onTweenUpdate, onTweenEnd);
             var oE:Function = getStyle("openEasingFunction") as Function;
             if (oE != null)
                 tween.easingFunction = oE;

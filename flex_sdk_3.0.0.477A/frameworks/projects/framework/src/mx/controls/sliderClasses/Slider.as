@@ -2513,7 +2513,7 @@ public class Slider extends UIComponent
                 xM = getXFromValue(getValueFromX(xM));
 
             var duration:Number = getStyle("slideDuration");
-            var t:Tween = new Tween(thumb, thumb.xPosition, xM, duration);
+            var t:Tween = new Tween(thumb, thumb.xPosition, xM, duration, -1, thumb.onTweenUpdate, thumb.onTweenEnd);
 
             var easingFunction:Function = getStyle("slideEasingFunction") as Function;
             if (easingFunction != null)

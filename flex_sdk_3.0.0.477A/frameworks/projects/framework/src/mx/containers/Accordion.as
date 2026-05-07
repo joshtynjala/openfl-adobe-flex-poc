@@ -1861,7 +1861,7 @@ public class Accordion extends Container implements IHistoryManagerClient, IFocu
 
         // A single instance of Tween drives the animation.
         var openDuration:Number = getStyle("openDuration");
-        tween = new Tween(this, 0, tweenContentHeight, openDuration);
+        tween = new Tween(this, 0, tweenContentHeight, openDuration, -1, onTweenUpdate, onTweenEnd);
 
         var easingFunction:Function = getStyle("openEasingFunction") as Function;
         if (easingFunction != null)

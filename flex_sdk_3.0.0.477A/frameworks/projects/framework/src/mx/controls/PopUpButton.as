@@ -788,7 +788,7 @@ public class PopUpButton extends Button
         // processing until the tween finishes executing.
         UIComponent.suspendBackgroundProcessing();
         
-        tween = new Tween(this, initY, endY, duration);
+        tween = new Tween(this, initY, endY, duration, -1, onTweenUpdate, onTweenEnd);
         if (easingFunction != null)
             tween.easingFunction = easingFunction;
     }

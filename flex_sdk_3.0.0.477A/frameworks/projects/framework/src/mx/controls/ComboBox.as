@@ -1616,7 +1616,7 @@ public class ComboBox extends ComboBase
             _dropdown.enabled = false;
         
         duration = Math.max(1, duration);
-        tween = new Tween(this, initY, endY, duration);
+        tween = new Tween(this, initY, endY, duration, -1, onTweenUpdate, onTweenEnd);
         
         if (easingFunction != null && tween)
             tween.easingFunction = easingFunction;

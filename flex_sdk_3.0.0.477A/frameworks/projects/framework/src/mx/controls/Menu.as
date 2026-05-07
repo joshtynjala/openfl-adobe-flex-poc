@@ -1457,7 +1457,7 @@ public class Menu extends List implements IFocusManagerContainer
 	        // processing until the tween finishes executing.
 	        UIComponent.suspendBackgroundProcessing();
 	
-	        popupTween = new Tween(this, [0,0], [unscaledWidth,unscaledHeight], duration);
+	        popupTween = new Tween(this, [0,0], [unscaledWidth,unscaledHeight], duration, -1, onTweenUpdate, onTweenEnd);
         }
         else 
         {
