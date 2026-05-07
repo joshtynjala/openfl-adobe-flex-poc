@@ -5,18 +5,30 @@
 		"html-template": "index.template.html",
 		"source-path": [
 			"src",
-			"flex_sdk_3.0.0.477A/frameworks/projects/framework/src"
+			"flex_sdk_3.0.0.477A/frameworks/projects/framework/src",
+			"flex_sdk_3.0.0.477A/frameworks/projects/rpc/src"
 		],
 		"js-library-path": [
 			"${royalelib}/js/libs/LanguageJS.swc",
-			"${royalelib}/js/libs/ReflectionJS.swc"
+			"${royalelib}/js/libs/ReflectionJS.swc",
+			"${royalelib}/js/libs/CoreJS.swc",
+			"${royalelib}/js/libs/XMLJS.swc"
 		],
 		"js-external-library-path": [
-			"${royalelib}/libs/player/11.1/playerglobal.swc"
+			"${royalelib}/libs/player/11.1/playerglobal.swc",
+			"${royalelib}/../js/libs/GCL.swc"
 		],
 		"namespace": [
 			{
+				"manifest": "${royalelib}/mxml-manifest.xml",
+				"uri": "http://www.adobe.com/2006/mxml"
+			},
+			{
 				"manifest": "flex_sdk_3.0.0.477A/frameworks/projects/framework/manifest.xml",
+				"uri": "http://www.adobe.com/2006/mxml"
+			},
+			{
+				"manifest": "flex_sdk_3.0.0.477A/frameworks/projects/rpc/manifest.xml",
 				"uri": "http://www.adobe.com/2006/mxml"
 			}
 		],
