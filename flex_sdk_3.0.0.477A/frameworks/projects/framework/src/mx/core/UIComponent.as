@@ -77,7 +77,6 @@ import mx.utils.GraphicsUtil;
 import mx.utils.StringUtil;
 import mx.validators.IValidatorListener;
 import mx.validators.ValidationResult;
-import flash.utils.getDefinitionByName;
 
 use namespace mx_internal;
 
@@ -7463,8 +7462,7 @@ public class UIComponent extends FlexSprite
 
             try
             {
-                // className = getQualifiedSuperclassName(myApplicationDomain.getDefinition(className));
-                className = getQualifiedSuperclassName(getDefinitionByName(className));
+                className = getQualifiedSuperclassName(myApplicationDomain.getDefinition(className));
                 className = className.replace("::", ".");
             }
             catch(e:ReferenceError)
