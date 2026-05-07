@@ -26,6 +26,23 @@ flash.utils.describeType = function()
 {
 	return new XML();
 }
+flash.system.ApplicationDomain.currentDomain.hasDefinition = function()
+{
+	var def = null;
+	try
+	{
+		def = flash.utils.getDefinitionByName(...arguments);
+	}
+	catch(e)
+	{
+		return false;
+	}
+	return def != null;
+}
+flash.system.ApplicationDomain.currentDomain.getDefinition = function()
+{
+	return flash.utils.getDefinitionByName(...arguments);
+}
 
 flash.utils.Proxy = function() {}
 

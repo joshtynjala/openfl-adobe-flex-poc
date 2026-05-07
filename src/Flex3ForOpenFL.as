@@ -1,25 +1,23 @@
 package
 {
 	import flash.display.Sprite;
-	import flash.text.TextField;
-	import flash.text.TextFieldAutoSize;
-	import mx.controls.Button;
-	import mx.managers.SystemManager;
 	import flash.events.Event;
-	import mx.core.Application;
+
+	import mx.controls.Alert;
 	import mx.core.mx_internal;
-	import mx.styles.StyleManagerImpl;
-	import mx.managers.LayoutManager;
 	import mx.managers.BrowserManagerImpl;
 	import mx.managers.CursorManagerImpl;
 	import mx.managers.DragManagerImpl;
 	import mx.managers.HistoryManagerImpl;
+	import mx.managers.LayoutManager;
 	import mx.managers.PopUpManagerImpl;
+	import mx.managers.SystemManager;
 	import mx.managers.ToolTipManagerImpl;
-	import mx.controls.Alert;
+	import mx.styles.StyleManagerImpl;
+
+	import org.apache.royale.reflection.getDefinitionByName;
 	import org.apache.royale.reflection.getQualifiedClassName;
 	import org.apache.royale.reflection.getQualifiedSuperclassName;
-	import org.apache.royale.reflection.getDefinitionByName;
 
 	public class Flex3ForOpenFL extends Sprite
 	{
@@ -53,17 +51,20 @@ package
 	}
 }
 
-import mx.managers.SystemManager;
 import flash.display.LoaderInfo;
-import mx.styles.StyleManager;
-import mx.styles.CSSStyleDeclaration;
-import mx.skins.Border;
-import mx.core.mx_internal;
-import mx.skins.halo.HaloFocusRect;
-import mx.skins.halo.ButtonSkin;
 import flash.display.Stage;
-import openfl.Lib;
 import flash.events.Event;
+import flash.system.ApplicationDomain;
+
+import mx.core.mx_internal;
+import mx.managers.SystemManager;
+import mx.skins.halo.ButtonSkin;
+import mx.skins.halo.HaloFocusRect;
+import mx.styles.CSSStyleDeclaration;
+import mx.styles.StyleManager;
+
+import openfl.Lib;
+
 import org.apache.royale.reflection.getDefinitionByName;
 
 class OpenFLSystemManager extends SystemManager {
@@ -313,21 +314,6 @@ class OpenFLSystemManager extends SystemManager {
 		return super.create.apply(this, params);
 	}
 
-	override public function getDefinitionByName(name:String):Object
-	{
-		var index:int = name.lastIndexOf("::");
-		if(index != -1)
-		{
-			name = name.substr(0, index) + "." + name.substr(index + 2);
-		}
-		var def:* = org.apache.royale.reflection.getDefinitionByName(name);
-		if(def)
-		{
-			return def;
-		}
-		return Lib.getDefinitionByName(name);
-    }
-
 	override public function info():Object
 	{
 		return {
@@ -337,6 +323,7 @@ class OpenFLSystemManager extends SystemManager {
 			backgroundSize: undefined,
 			mainClassName: "MyApp",
             usePreloader: false,
+            currentDomain: ApplicationDomain.currentDomain,
 			mixins: [ /*"_HelloFlex_FlexInit", "_HelloFlex_Styles", "mx.styles.StyleManagerImpl"*/ ]
 		}
 	}
