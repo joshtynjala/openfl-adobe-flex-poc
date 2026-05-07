@@ -2425,11 +2425,11 @@ public class UIComponent extends FlexSprite
                 // the root property holds its SystemManager.
                 _systemManager = (r as ISystemManager);
             }
-        //   else if (r)
-        //     {
-        //         // if the root is the Stage, then we are in a second AIR window
-        //         _systemManager = Stage(r).getChildAt(0) as ISystemManager;
-        //     }
+            else if (r && (r is Stage))
+            {
+                // if the root is the Stage, then we are in a second AIR window
+                _systemManager = Stage(r).getChildAt(0) as ISystemManager;
+            }
             else
             {
                 // If this object isn't attached to the display list, then
