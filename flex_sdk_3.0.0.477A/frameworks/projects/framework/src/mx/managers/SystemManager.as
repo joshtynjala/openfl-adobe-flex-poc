@@ -2278,14 +2278,14 @@ public class SystemManager extends MovieClip
 		// Note: getDefinitionByName() will return null
 		// if the class can't be found.
 
-		// Singleton.registerClass("mx.managers::IBrowserManager",
-		// 	Class(getDefinitionByName("mx.managers::BrowserManagerImpl")));
+		Singleton.registerClass("mx.managers::IBrowserManager",
+			Class(getDefinitionByName("mx.managers::BrowserManagerImpl")));
 
 		Singleton.registerClass("mx.managers::ICursorManager",
 			Class(getDefinitionByName("mx.managers::CursorManagerImpl")));
 
-		// Singleton.registerClass("mx.managers::IHistoryManager",
-		// 	Class(getDefinitionByName("mx.managers::HistoryManagerImpl")));
+		Singleton.registerClass("mx.managers::IHistoryManager",
+			Class(getDefinitionByName("mx.managers::HistoryManagerImpl")));
 
 		Singleton.registerClass("mx.managers::ILayoutManager",
 			Class(getDefinitionByName("mx.managers::LayoutManager")));
@@ -2296,21 +2296,21 @@ public class SystemManager extends MovieClip
 		Singleton.registerClass("mx.managers::IToolTipManager2",
 			Class(getDefinitionByName("mx.managers::ToolTipManagerImpl")));
 
-		// if (Capabilities.playerType == "Desktop")
-		// {
-		// 	Singleton.registerClass("mx.managers::IDragManager",
-		// 		Class(getDefinitionByName("mx.managers::NativeDragManagerImpl")));
+		if (Capabilities.playerType == "Desktop")
+		{
+			Singleton.registerClass("mx.managers::IDragManager",
+				Class(getDefinitionByName("mx.managers::NativeDragManagerImpl")));
 				
-		// 	// Make this call to create a new instance of the DragManager singleton. 
-		// 	// This will allow the application to receive NativeDragEvents that originate
-		// 	// from the desktop.
-		// 	// if this class is not registered, it's most likely because the NativeDragManager is not
-		// 	// linked in correctly. all back to old DragManager.
-		// 	if (Singleton.getClass("mx.managers::IDragManager") == null)
-		// 		Singleton.registerClass("mx.managers::IDragManager",
-		// 			Class(getDefinitionByName("mx.managers::DragManagerImpl")));
-		// }
-		// else
+			// Make this call to create a new instance of the DragManager singleton. 
+			// This will allow the application to receive NativeDragEvents that originate
+			// from the desktop.
+			// if this class is not registered, it's most likely because the NativeDragManager is not
+			// linked in correctly. all back to old DragManager.
+			if (Singleton.getClass("mx.managers::IDragManager") == null)
+				Singleton.registerClass("mx.managers::IDragManager",
+					Class(getDefinitionByName("mx.managers::DragManagerImpl")));
+		}
+		else
 		{ 
 			Singleton.registerClass("mx.managers::IDragManager",
 				Class(getDefinitionByName("mx.managers::DragManagerImpl")));

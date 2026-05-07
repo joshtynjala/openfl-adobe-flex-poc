@@ -10,8 +10,10 @@ package
 	import mx.core.mx_internal;
 	import mx.styles.StyleManagerImpl;
 	import mx.managers.LayoutManager;
+	import mx.managers.BrowserManagerImpl;
 	import mx.managers.CursorManagerImpl;
 	import mx.managers.DragManagerImpl;
+	import mx.managers.HistoryManagerImpl;
 	import mx.managers.PopUpManagerImpl;
 	import mx.managers.ToolTipManagerImpl;
 	import mx.controls.Alert;
@@ -25,8 +27,10 @@ package
 		{
 			super();
 			MyApp;
+            BrowserManagerImpl;
 			CursorManagerImpl;
 			DragManagerImpl;
+            HistoryManagerImpl;
 			LayoutManager;
 			PopUpManagerImpl;
 			StyleManagerImpl;
