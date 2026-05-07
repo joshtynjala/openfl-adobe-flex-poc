@@ -4184,10 +4184,13 @@ public class ListBase extends ScrollControlBase
 
         if (data is XML)
         {
+            var xmlData:XML = data as XML;
             try
             {
-                if (data[labelField].length() != 0)
-                    data = data[labelField];
+                if (labelField.charAt(0) == "@" && xmlData.attributes(labelField.substr(1)).length != 0)
+                    data = xmlData.attribute(labelField.substr(1));
+                else if (xmlData.children(labelField).length != 0)
+                    data = xmlData.child(labelField);
                 //by popular demand, this is a default XML labelField
                 //else if (data.@label.length() != 0)
                 //  data = data.@label;

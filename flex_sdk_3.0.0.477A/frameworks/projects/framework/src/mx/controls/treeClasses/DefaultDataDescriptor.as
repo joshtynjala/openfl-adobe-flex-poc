@@ -81,7 +81,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
         if (node is XML)
         {
             //trace("getChildren", node.toXMLString());
-            children = node.*;
+            children = XML(node).*;
         }
         else if (node is Object)
         {
@@ -210,10 +210,11 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
             
         if (node is XML)
         {
-            var childList:XMLList = node.children();
+            var xmlNode:XML = XML(node);
+            var childList:XMLList = xmlNode.children();
             //accessing non-required e4x attributes is quirky
             //but we know we'll at least get an XMLList
-            var branchFlag:XMLList = node.@isBranch;
+            var branchFlag:XMLList = xmlNode.@isBranch;
             //check to see if a flag has been set
             if (branchFlag.length() == 1)
             {
@@ -427,7 +428,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
     {
         if (node is XML)
         {
-            return String(node.@type);
+            return String(XML(node).@type);
         }
         else if (node is Object)
         {
@@ -456,7 +457,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
         var enabled:*;
         if (node is XML)
         {
-            enabled = node.@enabled;
+            enabled = XML(node).@enabled;
             if (enabled[0] == false)
                 return false;
         }
@@ -487,7 +488,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
     {
         if (node is XML)
         {
-            node.@enabled = value;
+            XML(node).@enabled = value;
         }
         else if (node is Object)
         {
@@ -514,7 +515,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
     {
         if (node is XML)
         {
-            var toggled:* = node.@toggled;
+            var toggled:* = XML(node).@toggled;
             if (toggled[0] == true)
                 return true;
         }
@@ -545,7 +546,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
     {
         if (node is XML)
         {
-            node.@toggled = value;
+            XML(node).@toggled = value;
         }
         else if (node is Object)
         {
@@ -573,7 +574,7 @@ public class DefaultDataDescriptor implements ITreeDataDescriptor2, IMenuDataDes
     {
         if (node is XML)
         {
-            return node.@groupName;
+            return XML(node).@groupName;
         }
         else if (node is Object)
         {

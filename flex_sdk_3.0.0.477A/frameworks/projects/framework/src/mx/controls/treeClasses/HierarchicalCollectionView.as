@@ -240,10 +240,11 @@ public class HierarchicalCollectionView extends EventDispatcher
 				node = modelCursor.current;
 				if (node is XML)
 				{
+					var xmlNode:XML = XML(node);
 					if (firstNode)
 					{	
 						firstNode = false;
-						var parNode:* = node.parent();
+						var parNode:* = xmlNode.parent();
 						if (parNode)
 						{
 							startTrackUpdates(parNode);
