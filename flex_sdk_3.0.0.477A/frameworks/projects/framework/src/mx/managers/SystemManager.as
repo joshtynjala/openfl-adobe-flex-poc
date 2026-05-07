@@ -1395,8 +1395,8 @@ public class SystemManager extends MovieClip
 	{
 		if (isStageRoot)
 		{
-			_width = stage.stageWidth / this.scaleX;
-			_height = stage.stageHeight / this.scaleY;
+			_width = stage.stageWidth;
+			_height = stage.stageHeight;
 		}
 		else
 		{
@@ -1507,8 +1507,8 @@ public class SystemManager extends MovieClip
 			preloaderBackgroundAlpha,
 			preloaderBackgroundImage,
 			preloaderBackgroundSize,
-			isStageRoot ? stage.stageWidth / this.scaleX : loaderInfo.width,
-			isStageRoot ? stage.stageHeight / this.scaleY : loaderInfo.height,
+			isStageRoot ? stage.stageWidth : loaderInfo.width,
+			isStageRoot ? stage.stageHeight : loaderInfo.height,
 		    null,
 			null,
 			rslList,
@@ -2174,7 +2174,7 @@ public class SystemManager extends MovieClip
 			var g:Graphics = mouseCatcher.graphics;
 			g.clear();
 			g.beginFill(0x000000, 0);
-			g.drawRect(0, 0, stage.stageWidth / this.scaleX, stage.stageHeight / this.scaleY);
+			g.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
 			g.endFill();
 		}
 	}
@@ -2461,10 +2461,10 @@ public class SystemManager extends MovieClip
 				
 				// stageWidth/stageHeight may have changed between initialize() and now,
 				// so refresh our _width and _height here. 
-				_width = stage.stageWidth / this.scaleX;
-				_height = stage.stageHeight / this.scaleY;
+				_width = stage.stageWidth;
+				_height = stage.stageHeight;
 				
-				IFlexDisplayObject(app).setActualSize(stage.stageWidth / this.scaleX, stage.stageHeight / this.scaleY);
+				IFlexDisplayObject(app).setActualSize(stage.stageWidth, stage.stageHeight);
 			}
 			else
 			{
@@ -2526,8 +2526,8 @@ public class SystemManager extends MovieClip
 	 */
 	private function Stage_resizeHandler(event:Event = null):void
 	{	
-		var w:Number = stage.stageWidth / this.scaleX;
-		var h:Number = stage.stageHeight / this.scaleY;
+		var w:Number = stage.stageWidth;
+		var h:Number = stage.stageHeight;
 		var m:Number = loaderInfo.width;
 		var n:Number = loaderInfo.height;
 
@@ -2582,8 +2582,8 @@ public class SystemManager extends MovieClip
 
 		if (isStageRoot)
 		{
-			_width = stage.stageWidth / this.scaleX;
-			_height = stage.stageHeight / this.scaleY;
+			_width = stage.stageWidth;
+			_height = stage.stageHeight;
 		}
 
 		if (event)

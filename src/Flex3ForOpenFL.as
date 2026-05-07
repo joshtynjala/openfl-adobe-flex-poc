@@ -91,8 +91,6 @@ class OpenFLSystemManager extends SystemManager {
 
     override mx_internal function initialize():void
     {
-        // trace("initialize system manager");
-        scaleX = scaleY = this.stage["window"].scale;
         super.mx_internal::initialize();
     }
 
