@@ -204,7 +204,7 @@ public class HierarchicalViewCursor extends EventDispatcher
         	}
         	else
         	{
-        		return childNodes[currentChildIndex];
+        		return IList(childNodes).getItemAt(currentChildIndex);
         	}
  		}
         catch(e:RangeError)
@@ -337,7 +337,7 @@ public class HierarchicalViewCursor extends EventDispatcher
 				// Walk it until you hit one or the other.
                 n = childNodes.length;
                 {
-                    var child:Object = childNodes[i];
+                    var child:Object = IList(childNodes).getItemAt(i);
                     
 					if (child == curParent)
                         return false;
@@ -359,7 +359,7 @@ public class HierarchicalViewCursor extends EventDispatcher
         n = childNodes.length;
 		for (i = 0; i < n; i++)
         {
-            child = childNodes[i];
+            child = IList(childNodes).getItemAt(i);
 
             if (child == currentNode)
                 return false;
@@ -469,7 +469,7 @@ public class HierarchicalViewCursor extends EventDispatcher
 					childIndexStack.push(currentChildIndex);
 					parentNodes.push(currentNode);
 					currentChildIndex = 0;
-					currentNode = childNodes[0];
+					currentNode = IList(childNodes).getItemAt(0);
 					currentIndex++;
 					_currentDepth++;
 					return true;
@@ -546,7 +546,7 @@ public class HierarchicalViewCursor extends EventDispatcher
 					//get the next child node
 					try
 					{
-						currentNode = childNodes[++currentChildIndex];
+						currentNode = IList(childNodes).getItemAt(++currentChildIndex);
 						break;
 					}
 					catch(e:RangeError)
@@ -603,7 +603,7 @@ public class HierarchicalViewCursor extends EventDispatcher
         		// get previous child sibling
         		try 
         		{
-        			currentNode = childNodes[--currentChildIndex];
+        			currentNode = IList(childNodes).getItemAt(--currentChildIndex);
         		}
         		catch(e:RangeError)
         		{
@@ -645,7 +645,7 @@ public class HierarchicalViewCursor extends EventDispatcher
             		childIndexStack.push(currentChildIndex);
             		parentNodes.push(currentNode);
             		currentChildIndex = childNodes.length - 1;
-            		currentNode = childNodes[currentChildIndex];
+            		currentNode = IList(childNodes).getItemAt(currentChildIndex);
            			_currentDepth++;
 				}
 				else
@@ -810,7 +810,7 @@ public class HierarchicalViewCursor extends EventDispatcher
         	{
         		parentNodes.push(currentNode);
         		childIndexStack.push(currentChildIndex);
-        		currentNode = childNodes[childNodes.length - 1];
+        		currentNode = IList(childNodes).getItemAt(childNodes.length - 1);
         		currentChildIndex = childNodes.length - 1;
            		_currentDepth++;
          	}

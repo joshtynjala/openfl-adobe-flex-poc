@@ -27,6 +27,7 @@ import mx.events.CollectionEventKind;
 import mx.events.PropertyChangeEvent;
 import mx.utils.IXMLNotifiable;
 import mx.utils.XMLNotifier;
+import mx.collections.IList;
 
 [ExcludeClass]
 
@@ -289,8 +290,8 @@ public class HierarchicalCollectionView extends EventDispatcher
 					for (var i:int = 0; i < numChildren; i++)
 					{
 						if (node is XML)
-							startTrackUpdates(childNodes[i]);
-						length += calculateLength(childNodes[i], node) + 1;
+							startTrackUpdates(IList(childNodes).getItemAt(i));
+						length += calculateLength(IList(childNodes).getItemAt(i), node) + 1;
 					}
 				}
 			}
@@ -442,7 +443,7 @@ public class HierarchicalCollectionView extends EventDispatcher
 				var numChildren:int = childNodes.length;
 				for (var i:int = 0; i < numChildren; i++)
 				{
-					getVisibleNodes(childNodes[i], node, nodeArray);
+					getVisibleNodes(IList(childNodes).getItemAt(i), node, nodeArray);
 				}
 			}
 		}

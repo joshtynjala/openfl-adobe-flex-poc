@@ -23,6 +23,7 @@ import mx.controls.treeClasses.HierarchicalCollectionView;
 import mx.core.UIComponent;
 import mx.core.mx_internal;
 import mx.events.TreeEvent;
+import mx.collections.IList;
 
 use namespace mx_internal;
 
@@ -504,7 +505,7 @@ public class TreeAccImpl extends AccImpl
 				n = childNodes.length;
 				for (i = 0; i < n; i++)
 				{
-					if (item == childNodes[i])
+					if (item == IList(childNodes).getItemAt(i))
 						break;
 				}
 			}
