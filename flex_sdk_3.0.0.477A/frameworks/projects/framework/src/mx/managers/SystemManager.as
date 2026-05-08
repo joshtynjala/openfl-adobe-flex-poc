@@ -2086,8 +2086,7 @@ public class SystemManager extends MovieClip
 			var domain:ApplicationDomain = sm.loaderInfo.applicationDomain;
 			try
 			{
-				// var cls:Class = Class(domain.getDefinition(className));
-				var cls:Class = Class(sm.getDefinitionByName(className));
+				var cls:Class = Class(domain.getDefinition(className));
 				if (object is cls)
 					return sm as DisplayObject;
 			}
