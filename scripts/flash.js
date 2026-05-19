@@ -61,3 +61,5 @@ flash.utils.Proxy.prototype['http_$$www_adobe_com$2006$actionscript$flash$proxy_
 flash.utils.Proxy.prototype['http_$$www_adobe_com$2006$actionscript$flash$proxy__deleteProperty'] = function() {
     return false;
 }
+
+flash.utils.ByteArray.set_defaultEndian(flash.utils.Endian.BIG_ENDIAN);
