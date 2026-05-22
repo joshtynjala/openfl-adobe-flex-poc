@@ -3,8 +3,12 @@
 	"compilerOptions": {
 		"targets": ["JS"],
 		"html-template": "index.template.html",
+		"locale": [
+			"en_US"
+		],
 		"source-path": [
 			"src",
+			"flex_sdk_3.0.0.477A/frameworks/projects/framework/bundles/{locale}/src",
 			"flex_sdk_3.0.0.477A/frameworks/projects/framework/src",
 			"flex_sdk_3.0.0.477A/frameworks/projects/rpc/src"
 		],

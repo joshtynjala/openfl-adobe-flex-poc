@@ -716,10 +716,10 @@ include "../styles/metadata/AnchorStyles.as";
 
 [AccessibilityClass(implementation="mx.accessibility.UIComponentAccImpl")]
 
-// [ResourceBundle("core")]
+[ResourceBundle("core")]
 
 // skins resources aren't found because CSS visited by the compiler
-// [ResourceBundle("skins")]
+[ResourceBundle("skins")]
 
 /**
  *  The UIComponent class is the base class for all visual components,

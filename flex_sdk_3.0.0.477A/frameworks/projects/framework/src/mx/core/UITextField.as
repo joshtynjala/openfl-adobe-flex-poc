@@ -40,7 +40,7 @@ include "../styles/metadata/LeadingStyle.as"
 include "../styles/metadata/PaddingStyles.as"
 include "../styles/metadata/TextStyles.as"
 
-// [ResourceBundle("core")]
+[ResourceBundle("core")]
     
 /**
  *  The UITextField class defines the component used by many Flex

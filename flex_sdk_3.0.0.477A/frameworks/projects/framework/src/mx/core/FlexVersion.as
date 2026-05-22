@@ -14,7 +14,7 @@ package mx.core
 
 import mx.resources.ResourceManager;
 
-// [ResourceBundle("core")]
+[ResourceBundle("core")]
 
 /** 
  *  This class controls the backward-compatibility of the framework.

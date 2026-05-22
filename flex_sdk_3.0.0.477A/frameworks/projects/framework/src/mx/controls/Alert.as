@@ -76,7 +76,7 @@ use namespace mx_internal;
 
 [RequiresDataBinding(true)]
 
-// [ResourceBundle("controls")]
+[ResourceBundle("controls")]
     
 /**
  *  The Alert control is a pop-up dialog box that can contain a message,

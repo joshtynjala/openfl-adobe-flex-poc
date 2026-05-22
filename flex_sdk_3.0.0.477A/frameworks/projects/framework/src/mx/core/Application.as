@@ -125,7 +125,7 @@ include "../styles/metadata/ModalTransparencyStyles.as";
  */
 [Frame(factoryClass="mx.managers.SystemManager")]
 
-// [ResourceBundle("core")]
+[ResourceBundle("core")]
 
 /**
  *  Flex defines a default, or Application, container that lets you start

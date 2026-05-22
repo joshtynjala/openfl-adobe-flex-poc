@@ -193,7 +193,7 @@ include "../styles/metadata/TextStyles.as"
  */
 [Style(name="paddingTop", type="Number", format="Length", inherit="no")]
 
-// [ResourceBundle("core")]
+[ResourceBundle("core")]
 
 /**
  *  The Container class is an abstract base class for components that

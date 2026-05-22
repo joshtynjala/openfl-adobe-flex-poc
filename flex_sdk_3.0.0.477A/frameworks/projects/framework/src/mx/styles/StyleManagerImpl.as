@@ -34,7 +34,7 @@ use namespace mx_internal;
 
 [ExcludeClass]
 
-// [ResourceBundle("styles")]
+[ResourceBundle("styles")]
     
 /**
  *  @private
