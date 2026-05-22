@@ -60,5 +60,5 @@
 		"-children-as-data=false",
 		"-warn-this-within-closure=false"
 	],
-	"mainClass": "Flex3ForOpenFL"
+	"mainClass": "MyAppSystemManager"
 }

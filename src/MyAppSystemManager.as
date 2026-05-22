@@ -33,9 +33,14 @@ package
 
     import openfl.Lib;
 
-    public class Flex3ForOpenFL extends SystemManager
+    /**
+     * Bootstraps the Flex application. Normally, the compiler would generate
+     * this class. However, we need to do it manually for now, and this will be
+     * improved in the future.
+     */
+    public class MyAppSystemManager extends SystemManager
     {
-        public function Flex3ForOpenFL()
+        public function MyAppSystemManager()
         {
             super();
             MyApp;

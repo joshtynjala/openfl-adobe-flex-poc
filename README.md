@@ -6,7 +6,7 @@ An Adobe Flex 3 "Hello World" app compiled to JavaScript with the [Apache Royale
 
 This project is a proof of concept that I challenged myself to build. I bootstrapped enough to get this simple application running, and nothing more. In other words, you shouldn't expect the entire framework to be working, nor should you expect that it'll be easy to get a production Flex app running in JS.
 
-To see how the everything is bootstrapped, look at _index.template.html_ and _src/Flex3ForOpenFL.as_.
+To see how the everything is bootstrapped, look at _index.template.html_ and _src/MyAppSystemManager.as_.
 
 ## Compile Instructions
 
@@ -27,7 +27,7 @@ npx asconfigc --sdk path/to/royale-asjs
 Without Node.js, the following command works for me to compile the project on macOS:
 
 ```sh
-asjsc --debug=true +configname=js --targets=JSRoyale --html-template=index.template.html --source-path+=src --source-path+=flex_sdk_3.0.0.477A/frameworks/projects/framework/src --namespace+=http://www.adobe.com/2006/mxml,flex_sdk_3.0.0.477A/frameworks/projects/framework/manifest.xml --js-library-path+=\${royalelib}/js/libs/LanguageJS.swc --js-library-path+=\${royalelib}/js/libs/ReflectionJS.swc --js-external-library-path+=\${royalelib}/libs/player/11.1/playerglobal.swc --source-map=true -js-getter-prefix=get_ -js-setter-prefix=set_ -js-vector-emulation-class=openfl.Vector -js-vector-emulation-element-types=false -js-vector-emulation-literal-function=openfl.Vector.ofArray -js-vector-index-checks=false -children-as-data=false -- src/Flex3ForOpenFL.as
+asjsc --debug=true +configname=js --targets=JSRoyale --html-template=index.template.html --source-path+=src --source-path+=flex_sdk_3.0.0.477A/frameworks/projects/framework/src --namespace+=http://www.adobe.com/2006/mxml,flex_sdk_3.0.0.477A/frameworks/projects/framework/manifest.xml --js-library-path+=\${royalelib}/js/libs/LanguageJS.swc --js-library-path+=\${royalelib}/js/libs/ReflectionJS.swc --js-external-library-path+=\${royalelib}/libs/player/11.1/playerglobal.swc --source-map=true -js-getter-prefix=get_ -js-setter-prefix=set_ -js-vector-emulation-class=openfl.Vector -js-vector-emulation-element-types=false -js-vector-emulation-literal-function=openfl.Vector.ofArray -js-vector-index-checks=false -children-as-data=false -- src/MyAppSystemManager.as
 ```
 
 On Windows, the command may need some minor tweaks.
